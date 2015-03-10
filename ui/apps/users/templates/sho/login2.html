@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
+    <title>产品登录</title>
+    <link rel="stylesheet" href="{% static 'users/sho/css/amazeui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/ipad.css' %}">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body class="HiraginoGBW3">
+<header>
+    <div class="w">
+    <div class="logo"><a href="/accounts/#top"><img src="{% static 'users/sho/images/logo.png' %}" alt=""/></a></div>
+    <nav><ul><li><a href="/accounts/#aboutus">关于我们</a></li><li><a href="/accounts/#product">产品介绍</a></li><li><a href="/accounts/#contactus">联系我们</a></li><li><a class="log_reg" href="{% url 'pre_login' %}">登录/注册</a></li><li><a href="#">中文/EN</a></li></ul></nav>
+    </div>
+</header>
+<section id="loginarea">
+    <div class="login-box">
+        <h1>产品登录</h1>
+        </form>
+        <form class="login-form" method="post">
+          {% csrf_token %}
+            <ul>
+                <li><em class="user-ico"></em><span>|</span><input name='username' id="id_username" class="input-text" type="text" placeholder="email@gmail.com.cn" /> </li>
+                <li><em class="pass-ico"></em><span>|</span><input class="input-text" type="password" name='password' type="password" /> </li>
+            </ul>
+            <div class="btn-area"><a class="btn-login" type='submit' href="#">登录</a><a class="btn-reg" href="{% url 'trial' %}">注册</a></div>
+        </form>
+        <div class="login-plus">
+            <h3>或者使用以下方式登录</h3>
+            <ul><li><a href="#"><img src="images/qq_b_icon.png" alt="" /></a></li><li><a href="#"><img src="images/weixin_b_icon.png" alt="" /></a></li><li><a href="#"><img src="images/sina_b_icon.png" alt="" /></a></li></ul>
+        </div>
+    </div>
+
+</section>
+</body>
+<!--@华文细黑替代@-->
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.md5.js' %}"></script>
+<script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.2.1/js/amazeui.min.js"></script>
+<script type="text/javascript"> function youziku46604() { var resultStr = $(".HiraginoGBW3").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("9b037aa103aa42fea626e0d0ed4e5e19"+"HiraginoGBW3" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "HiraginoGBW3", "gid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "9b037aa103aa42fea626e0d0ed4e5e19" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku46604(); } })() </script>
+
+</html>
+<script type='text/javascript'>
+  $(function (){
+    $('.btn-login').on('click', function () {
+      $('.login-form').submit();
+    })
+  })
+</script>

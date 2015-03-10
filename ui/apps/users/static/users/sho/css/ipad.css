@@ -1,0 +1,31 @@
+/*小于1024*/
+@media screen and (max-width:1024px){
+    .footer-rss a{width:50px;}
+    .i-banner{height:550px;}
+    .pro_big_title{padding:0 10%;}
+    .pro_box{width:40%;height:500px;}
+    .pro_img{width:60%;height:500px;}
+    .app_item dl{height:300px;}
+    .hdotline{width:70%;}
+    .product_items dl{width:48%;}
+    .pro_five{padding-top:40px;}
+    .pro_pie{width:150px;height:150px;line-height:150px;}
+    .pro_pie img{width:60px;}
+    .pro_pie div{width:100%;height:100%;}
+    .pro_pie div{background-size:100% 100%;}
+}
+/*大于1200*/
+@media screen and (min-width:1200px){
+    .robot{left:250px;}
+    .app_item dl{width:80%;}
+    .app_item{background:#fff;}
+    .pro_five{max-width:1400px;margin:0 auto;padding-top:80px;min-width:1024px;}
+}
+
+@media screen and (min-width:1400px){
+    .robot{left:300px;}
+
+
+}
+@media screen and (min-width:1200px) and (max-width:1400px){
+}

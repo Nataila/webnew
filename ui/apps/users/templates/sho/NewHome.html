@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css3.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/amazeui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/ipad.css' %}">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="HiraginoGBW3" id="top">
+<header>
+    <div class="navfix">
+        <div class="logo"><a href="/accounts/#top"><img src="{% static 'users/sho/images/logo.png' %}" alt=""/></a></div>
+        <nav><ul><li><a href="/accounts/#aboutus">关于我们</a></li><li><a href="/accounts/#product">产品介绍</a></li><li><a href="/accounts/#contactus">联系我们</a></li><li><a class="log_reg" href="{% url 'pre_login' %}">登录/注册</a></li><li><a href="#">中文/EN</a></li></ul></nav>
+    </div>
+    <div class="slider">
+      <div class="banner">
+       <ul class="w1">
+           <li class="w1">
+               <img src="{% static 'users/sho/images/banner01.jpg' %}" alt=""/>
+               <div class="bwrap">
+                   <div class="slogan">JUST  ONE  CLICK  AWAY</div>
+                   <div class="bluelight"></div>
+                   <div class="sub_title">像搜索引擎一样简便</div>
+                   <div class="sub_des">
+                       <span class="sub_con">全面、精准、及时、可视化，你没想到的，我们都帮你做到</span><span class="sub_readmore"><a class="am-btn am-btn-primary" href="#">Read more</a></span>
+                   </div>
+               </div>
+           </li>
+           <li class="w1">
+               <img src="{% static 'users/sho/images/banner02.jpg' %}" alt=""/>
+               <div class="bwrap">
+               <div class="slogan">YOUR  DEMAND  OUR  RESPONSIBILITY</div>
+               <div class="bluelight"></div>
+               <div class="sub_title">一切以你的需求为向导</div>
+               <div class="sub_des">
+                   <span class="sub_con">个性化产品，
+                       <a class="pbtn" href=""><em>G-News</em><br/><b>个性新闻聚合</b></a>
+                       <a class="pbtn" href="#"><em>G-Analytics</em><br/><b>智能舆情分析</b></a>
+                       <a class="pbtn" href="#"><em>G-SimuTrading</em><br/><b>模拟测试平台</b></a>  ，提供全方位精准投资导向 </span><span class="sub_readmore"><a class="am-btn mt10 am-btn-primary" href="#">Read more</a></span>
+               </div>
+               </div>
+           </li>
+           <li class="w1">
+               <img src="{% static 'users/sho/images/banner03.jpg' %}" alt=""/>
+               <div class="bwrap">
+               <div class="slogan">MORE  THAN  KEYWORDS</div>
+               <div class="bluelight"></div>
+               <div class="sub_title">岂止于关键字</div>
+               <div class="sub_des">
+                   <span class="sub_con">依托于系统化金融事件模型库，基于Hadoop大数据平台，应用NLP技术，开启投资分析新纪元</span><span class="sub_readmore"><a class="am-btn am-btn-primary" href="#">Read more</a></span>
+               </div>
+               </div>
+           </li>
+           <li class="w1">
+               <img src="{% static 'users/sho/images/banner04.jpg' %}" alt=""/>
+               <div class="bwrap">
+               <div class="slogan">INVEST  WISELY</div>
+               <div class="bluelight"></div>
+               <div class="sub_title">提升你的投资感观</div>
+               <div class="sub_des">
+                   <span class="sub_con">首家基于大数据平台的事件级新闻舆情分析服务提供商</span><span class="sub_readmore"><a class="am-btn am-btn-primary" href="#aboutus">Read more</a></span>               </div>
+               </div>
+           </li>
+       </ul>
+
+    </div>
+      <div class="switch"><ul id="slider_switch"><li class="on"></li><li></li><li></li><li></li></ul></div>
+    </div>
+</header>
+<ul class="tbar" id="tbar">
+  <li><a class="btn1" href="{% url 'product' %}">个人产品介绍</a></li>
+  <li><a class="btn1" href="{% url 'inst' %}">机构产品介绍</a></li>
+  <li><a class="btn2" href="{% url 'trial'%}">免费试用</a></li>
+</ul>
+<div class="body">
+        <div class="red-line"></div>
+
+        <div class="main-content">
+            <div class="core_value">
+                <h3>格思，让新闻成为你的投资向导</h3>
+                <div class="core_title">CORE VALUE</div>
+                <div class="core_des">格思实现将新闻分析变成与技术分析和基本面分析并行的投资分析手段</div>
+            </div>
+            <div class="core_col">
+                <div class="core_col_box">
+                    <div class="core_img1 tc fl" data-am-scrollspy="{animation:'fade'}">
+                        <span class="text1" data-am-scrollspy="{animation:'fade', delay: 500}">数字信息</span>
+                        <span class="text2" data-am-scrollspy="{animation:'fade', delay: 500}">文本信息</span>
+                    </div>
+                    <div class="core_text fr">
+                        <h4>数字扩大到文字</h4>
+                        <p>应用大数据技术和自然语言处理 (NLP)<br/>投资分析的内容从数字进一步扩大为<br/>【数字+文本信息】的合集</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="dotline"></div>
+                <div class="core_col_box">
+                    <div class="core_text tr fl">
+                        <h4>创新思路分析</h4>
+                        <p>将文字量化为数字信号<br/>用技术分析的手段来分析验证新闻等文本信息<br/>实时将海量新闻转化为投资机会</p>
+                    </div>
+                    <div class="core_img2 fr tc" data-am-scrollspy="{animation:'fade'}">
+                        <span class="text1" data-am-scrollspy="{animation:'fade', delay: 500}">海量新闻</span>
+                        <span class="text2" data-am-scrollspy="{animation:'fade', delay: 500}">投资机会</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="dotline"></div>
+                <div class="core_col_box">
+                    <div class="core_img3 tc fl" data-am-scrollspy="{animation:'fade'}">
+                       <span class="text1" data-am-scrollspy="{animation:'fade',delay: 500}">单一化</span>
+                       <span class="text2" data-am-scrollspy="{animation:'fade',delay: 500}">系统化规模化</span>
+                    </div>
+                    <div class="core_text fr">
+                        <h4>新闻预测未来</h4>
+                        <p>系统化规模化处理新闻等文本信息<br/>发现其中的规律与趋势<br/>充分实现新闻的预测性</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="dotline"></div>
+                <div class="core_col_box">
+                    <div class="core_text tr fl">
+                        <h4>更丰富信息源</h4>
+                        <p>覆盖范围从主流财经媒体新闻扩大到<br/>证券交易所公告、法律文本、政府统计数据<br/>社交媒体、专业论坛等其他消息来源</p>
+                    </div>
+                    <div class="core_img4 fr tc" data-am-scrollspy="{animation:'fade'}">
+                        <span class="text1" data-am-scrollspy="{animation:'fade', delay: 500}">主流财经媒体新闻</span>
+                        <span class="text2" data-am-scrollspy="{animation:'fade', delay: 500}">更多信息源</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="about_us">
+            <h5 id="aboutus">ABOUT US</h5>
+            <div class="about_us_des">格思是新闻舆情分析的革新者</div>
+            <div class="robot_con">
+                    <div class="small_cloud"></div>
+                    <div class="big_cloud"></div>
+                <div class="robot_wrap">
+                    <div class="robot_bot" data-am-scrollspy="{animation:'fade'}"></div>
+                    <div class="robot_line" data-am-scrollspy="{animation:'fade',delay:1000}"></div>
+                    <div class="robot_cloud" data-am-scrollspy="{animation:'fade',delay:2000}">
+                        <span class="text1">采用【基于事件】的<br/>创新分析思路</span>
+                        <span class="text2">结合NLP和大数据技术<br/>依托金融事件模型库</span>
+                        <span class="text3">专注服务金融领域客户<br/>满足多种交易类信用类需求</span>
+                        <span class="text4">提供个性化新闻舆情分析及<br/>整合应用方案和定制托管服务</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product_highlight">
+            <h5 id="product">PRODUCT  HIGHLIGHTS</h5>
+            <div class="product_hightlight_des">格思专注为金融行业的个人和机构客户打造三款核心产品:</div>
+            <div class="product_three">
+                <a href="#"><em>G-News</em><span>个性新闻聚合</span></a>
+                <a href="#"><em>G-Analytics</em><span>智能舆情分析</span></a>
+                <a href="#"><em>G-SimuTrading</em><span>模拟测试平台</span></a>
+            </div>
+            <div class="product_items">
+                <dl>
+                    <dt><img style="margin-top:0px" src="{% static 'users/sho/images/t-1.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>事件级舆情分析</strong>
+                        <p>【基于事件】的自然语言处理<br/>实时处理新闻舆情，精准度高<br/>百分百机器可读</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{% static 'users/sho/images/t-2.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>需求导向功能设置</strong>
+                        <p>系统化金融事件模型库<br/>可以根据客户的策略需求<br/>实现个性化分析</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{% static 'users/sho/images/t-3.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>全面金融信息覆盖</strong>
+                        <p>金融信息覆盖面广<br/>全面覆盖新闻、官方公告、交易所<br/>社交媒体等多样信息</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{% static 'users/sho/images/t-4.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>交易/信用类应用</strong>
+                        <p>专注服务金融客户<br/>应用场景丰富<br/>满足交易类和信用类客户的多样性需求</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{% static 'users/sho/images/t-5.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>多样服务模式</strong>
+                        <p>采用月费和定制两种方式<br/>提供专业级别金融行业舆情分析<br/>满足不同金融客户多维度需求</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{% static 'users/sho/images/t-6.png' %}" alt="" /></dt>
+                    <dd>
+                        <strong>强大用户体验</strong>
+                        <p>下拉菜单勾选操作简单<br/>结果呈现进行可视化处理<br/>移动端网页端登录</p>
+                    </dd>
+                </dl>
+                <div class="clear"></div>
+            </div>
+        </div>
+        </div>
+    <div class="red-line"></div>
+    <footer class="HiraginoGBW3">
+            <h1 id="contactus">contact us</h1>
+            <div class="footer-top">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="footer-info">
+                                <ul>
+                                    <li class="win80"><em class="ico-1"></em>46 Albert Building, 49 Queen Victoria Street, London, EC4N 4SA</li>
+                                    <li><em class="ico-2"></em>+44 77 95 441346</li>
+                                    <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                                </ul>
+                                <ul>
+                                    <li><em class="ico-1"></em>中国北京朝阳区百子湾路32号</li>
+                                    <li><em class="ico-2"></em>+86 010 58765833</li>
+                                    <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td>
+                <div class="footer-rss">
+                    <a class="facebook-ico" href="#"></a><a class="google-ico" href="#"></a><a class="twitter-ico" href="#"></a>
+                    <a class="weixin-ico" href="#"></a><a class="sina-ico" href="#"></a><a class="qq-ico" href="#"></a>
+                </div>
+                        </td>
+
+                    </tr>
+                </table>
+
+                <div class="clear"></div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <div class="footer_logo"></div>
+                    <div class="footer_copyright">Copyright &copy; 2015-15 GLAUCUSIS SOLUTION All rights reserved.</div>
+                </div>
+            </div>
+    </footer>
+</body>
+<!--@华文细黑替代@-->
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/slider.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.md5.js' %}"></script>
+<script type="text/javascript"> function youziku46604() { var resultStr = $(".HiraginoGBW3").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("9b037aa103aa42fea626e0d0ed4e5e19"+"HiraginoGBW3" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "HiraginoGBW3", "gid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "9b037aa103aa42fea626e0d0ed4e5e19" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { }else{ youziku46604(); } })() </script>
+<script type="text/javascript" src="{% static 'users/sho/js/amazeui.min.js' %}"></script>
+<script>
+    jQuery(function($) {
+        $(window).resize(function(){
+            var w1=$(".w1:first").width();
+            if(w1>768)
+                $(".w1").height(parseInt(w1*800/1500));
+        })
+    });
+    jQuery(".slider").slide({
+        titCell: ".switch ul",
+        mainCell: ".banner ul",
+        effect: "fold",
+        autoPlay: true,
+        autoPage: true,
+        interTime:5000,
+        trigger: "click",
+        startFun: function(i) {
+            var curLi = jQuery(".slider .swtich li").eq(i);
+            if ( !! curLi.attr("_src")) {
+                curLi.css("background", curLi.attr("_src")).removeAttr("_src");
+            }
+        }
+    });
+</script>

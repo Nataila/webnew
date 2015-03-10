@@ -1,0 +1,51 @@
+*** Starting uWSGI 2.0.9 (64bit) on [Sun Feb 15 17:17:52 2015] ***
+compiled with version: 4.8.2 on 12 February 2015 16:06:16
+os: Linux-3.13.0-36-generic #63-Ubuntu SMP Wed Sep 3 21:30:07 UTC 2014
+nodename: ip-172-31-46-69
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/project/glaucusis/newsfeedsite/webnew
+*** running under screen session 14233.glau ***
+detected binary path: /usr/local/bin/uwsgi
+chdir() to /home/ubuntu/project/glaucusis/newsfeedsite/webnew/ui
+your processes number limit is 7861
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:9090 fd 3
+Python version: 2.7.6 (default, Mar 22 2014, 23:03:41)  [GCC 4.8.2]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xbc49b0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291072 bytes (284 KB) for 3 cores
+*** Operational MODE: preforking ***
+added /home/ubuntu/project/glaucusis/newsfeedsite/webnew/ to pythonpath.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xbc49b0 pid: 28408 (default app)
+mountpoint  already configured. skip.
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 28408)
+spawned uWSGI worker 1 (pid: 28409, cores: 1)
+spawned uWSGI worker 2 (pid: 28410, cores: 1)
+spawned uWSGI worker 3 (pid: 28411, cores: 1)
+[pid: 28411|app: 0|req: 1/1] 180.153.163.191 () {40 vars in 543 bytes} [Mon Feb 16 01:19:17 2015] GET /set_account => generated 0 bytes in 111 msecs (HTTP/1.1 301) 3 headers in 147 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 1/2] 180.153.163.191 () {40 vars in 545 bytes} [Mon Feb 16 01:19:17 2015] GET /set_account/ => generated 10297 bytes in 168 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 28410|app: 0|req: 1/3] 66.249.84.244 () {36 vars in 572 bytes} [Mon Feb 16 01:19:50 2015] GET /login/ => generated 1504 bytes in 127 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 2/4] 66.249.84.250 () {36 vars in 526 bytes} [Mon Feb 16 01:19:50 2015] GET /favicon.ico => generated 3199 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 28411|app: 0|req: 2/5] 101.226.66.179 () {40 vars in 581 bytes} [Mon Feb 16 01:21:14 2015] GET /admindb/industry_classification => generated 0 bytes in 2 msecs (HTTP/1.1 301) 3 headers in 167 bytes (1 switches on core 0)
+[pid: 28410|app: 0|req: 2/6] 101.226.66.179 () {40 vars in 583 bytes} [Mon Feb 16 01:21:14 2015] GET /admindb/industry_classification/ => generated 1917 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 336 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 3/7] 180.153.201.214 () {40 vars in 552 bytes} [Mon Feb 16 01:29:18 2015] GET /admindb/exchange => generated 0 bytes in 2 msecs (HTTP/1.1 301) 3 headers in 152 bytes (1 switches on core 0)
+[pid: 28411|app: 0|req: 3/8] 180.153.201.214 () {40 vars in 554 bytes} [Mon Feb 16 01:29:19 2015] GET /admindb/exchange/ => generated 1887 bytes in 44 msecs (HTTP/1.1 200) 7 headers in 336 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 4/9] 180.153.163.191 () {40 vars in 543 bytes} [Mon Feb 16 01:40:39 2015] GET /set_account => generated 0 bytes in 0 msecs (HTTP/1.1 301) 3 headers in 147 bytes (1 switches on core 0)
+[pid: 28410|app: 0|req: 3/10] 180.153.163.191 () {40 vars in 545 bytes} [Mon Feb 16 01:40:39 2015] GET /set_account/ => generated 10297 bytes in 100 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 5/11] 54.224.98.88 () {32 vars in 425 bytes} [Mon Feb 16 02:39:29 2015] HEAD / => generated 0 bytes in 1 msecs (HTTP/1.1 301) 3 headers in 141 bytes (1 switches on core 0)
+[pid: 28411|app: 0|req: 4/12] 54.224.98.88 () {32 vars in 468 bytes} [Mon Feb 16 02:39:29 2015] GET /clientaccesspolicy.xml => generated 3232 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 6/13] 198.211.36.9 () {36 vars in 499 bytes} [Mon Feb 16 03:09:56 2015] GET /manager/html => generated 3202 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 7/14] 223.202.40.210 () {36 vars in 502 bytes} [Mon Feb 16 03:29:46 2015] GET /manager/html => generated 3202 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 28409|app: 0|req: 8/15] 176.103.48.38 () {30 vars in 494 bytes} [Mon Feb 16 05:03:38 2015] GET /tag_products.php?id_tag=%27 => generated 26 bytes in 2 msecs (HTTP/1.0 400) 2 headers in 82 bytes (1 switches on core 0)
+Mon Feb 16 09:54:46 2015 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Mon Feb 16 09:54:46 2015 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Mon Feb 16 09:54:46 2015 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!

@@ -1,0 +1,142 @@
+.main {
+  height: 80%;
+  .content {
+    height: 100%;
+  }
+  .select-stock {
+    padding: 5px;
+    height: 100%;
+    border: 1px #4e5d6c solid;
+  }
+  .stock-list {
+    li {
+      //&:hover {
+      //  text-decoration: underline;
+      //}
+      .add-icon {
+        font-size: 10px;
+        margin-left: 20px;
+        float: right;
+        cursor: pointer;
+        color: #df691a;
+        span {
+          margin-left: 5px;
+        }
+        &:hover {
+          color: #FFA569;
+        }
+      }
+    }
+  }
+  .left {
+    overflow: auto;
+  }
+  .right {
+    #hot-chart {
+      height: 100%;
+      border: 1px #4e5d6c solid;
+    }
+  }
+}
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+.stock-list li {
+  color: #df691a;
+  cursor: pointer;
+}
+
+.self {
+  cursor: pointer !important;
+}
+
+.self:hover {
+  background-color: #485563;
+}
+
+
+ul.topnav li {}
+.topnav {
+  width: 100%;
+  padding: 40px 28px 25px 0;
+  font-family: "CenturyGothicRegular", "Century Gothic", Arial, Helvetica, sans-serif;
+}
+
+ul.topnav {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  line-height: 0.5em;
+  list-style: none;
+}
+ul.topnav li a {
+  line-height: 10px;
+  font-size: 11px;
+  padding: 10px 5px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+ul.topnav li a:hover {
+  background-color:#485563;
+  color:#df691a;
+}
+
+ul.topnav ul {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+ul.topnav ul li {
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+
+ul.topnav ul li a {
+  padding-left: 20px;
+  font-size: 10px;
+  font-weight: normal;
+  outline:0;
+}
+
+ul.topnav ul li a:hover {
+  background-color:#485563;
+  color:#df691a;
+}
+
+ul.topnav ul ul li a {
+  color:silver;
+  padding-left: 40px;
+}
+
+ul.topnav ul ul li a:hover {
+  background-color:#485563;
+  color:#df691a;
+}
+
+ul.topnav ul ul li a span.add {
+  color:#df691a;
+}
+
+ul.topnav ul ul li a span.add:hover {
+  color:#F9B689;
+}
+
+ul.topnav span{
+  float:right;
+}
+
+.instr_error {
+  color: #D9534F;
+  margin-top: 20px;
+}

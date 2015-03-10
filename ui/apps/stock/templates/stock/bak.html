@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load glau_extras %}
+<script type='text/template' id='tplExchange'>
+  <div class="panel-group" id="exchange" role="tablist" aria-multiselectable="true" type='text/template'>
+    <% _.each(data, function (i, j) { %>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading<%= i.id %>">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#exchange" href="#collapse<%= i.id %>" aria-expanded="true" aria-controls="collapse<%= i.id %>">
+              <%= j %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse<%= i.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i.id %>">
+          <div class="panel-body">
+            <ul class="list-unstyled self-stock">
+                <% _.each(i.instrument, function (k) {%>
+                  <li class='instrument-name'><a href="javascript:void(0)" data-id=<%= k.id %>><%= k.name %></a>
+                  <span class="glyphicon glyphicon-plus add-icon"><span>关注</span></span>
+                  <span class="glyphicon glyphicon-ok watched-icon"><span>已关注</span></span>
+                  </li>
+                <% }) %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</script>
+
+<script type='text/javascript'>
+</script>

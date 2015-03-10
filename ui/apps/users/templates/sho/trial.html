@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <title>免费试用</title>
+    <link rel="stylesheet" href="{% static 'users/sho/css/amazeui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/ipad.css' %}">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="HiraginoGBW3" id="trialbg">
+<header>
+    <div class="w">
+    <div class="logo"><a href="/accounts/#top"><img src="{% static 'users/sho/images/logo.png' %}" alt=""/></a></div>
+        <nav><ul><li><a href="#aboutus">关于我们</a></li><li><a href="#product">产品介绍</a></li><li><a href="#contactus">联系我们</a></li><li><a class="log_reg" href="{% url 'pre_login' %}">登录/注册</a></li><li><a href="#">中文/EN</a></li></ul></nav>
+    </div>
+</header>
+<section id="trial">
+        <div class="trial-wrap">
+        <h1>免费试用</h1>
+        <p>为了您尽快免费试用产品，请填写以下表格：</p>
+        <table id="trialform">
+          <!--
+          <tr><td><div class="input-wrap mr10"><em>姓：</em><input class="intxt-text"  type="text"/></div></td><td><div class="input-wrap"><em>名：</em><input class="intxt-text" type="text"/></div></td></tr>
+          <tr><td colspan="2"><div class="input-wrap"><em>公司：</em><input class="intxt-text w400" type="text"/></div></td></tr>
+          <tr><td colspan="2"><div class="input-wrap"><em>电话：</em><input class="intxt-text w400" type="text"/></div></td></tr>
+          -->
+          <form action="." method="POST" class='rege-form'>
+            {% csrf_token %}
+            <tr><td colspan="2"><div class="input-wrap"><em>用户名：</em><input class="intxt-text w400" name='username' id='id_username' type="text"/></div></td></tr>
+            <tr><td colspan="2"><div class="input-wrap"><em>密码：</em><input class="intxt-text w400" name='password' id='id_password' type="password"/></div></td></tr>
+            <tr><td colspan="2"><div class="input-wrap"><em>邮箱：</em><input class="intxt-text w400" name='email' type="text"/></div></td></tr>
+            <tr><td align="center" colspan="2"><a class="btn_red regester-btn" href="#">免费试用</a></td></tr>
+          </form>
+        </table>
+        </div>
+</section>
+</body>
+<!--@华文细黑替代@-->
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.md5.js' %}"></script>
+<script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.2.1/js/amazeui.min.js"></script>
+<script type="text/javascript"> function youziku46604() { var resultStr = $(".HiraginoGBW3").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("9b037aa103aa42fea626e0d0ed4e5e19"+"HiraginoGBW3" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "HiraginoGBW3", "gid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "9b037aa103aa42fea626e0d0ed4e5e19" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku46604(); } })() </script>
+<script type="text/javascript">
+$(function(){
+    $('.navfix').hover(function(){
+        $('.navfix').css('background','rgba(255,255,255,0.2)');
+    },function(){
+        $('.navfix').removeAttr('style');
+    })
+    $('.regester-btn').on('click', function () {
+      $('.rege-form').submit();
+    })
+})
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block css-file %}
+  {{ block.super }}
+  <link rel="stylesheet/less" type="text/css" href="{% static 'news/css/news.less' %}">
+{% endblock %}
+{% block js-file %}
+  {{ block.super }}
+  <script src={% static 'news/js/news.js' %}></script>
+{% endblock %}
+{% block main %}
+<div class="mod_list col-md-12">
+  <form class="form-inline" role="form" action="{% url 'modif_list' %}" method="GET">
+  <span class="watch-content">{% trans '列表名称：' %}<span>
+    <input type="text" class='form-control' name='list_name' value='{{mod_list_data}}'>
+    <input type="text" class='form-control' name='list_id' value='{{ mod_list_data.id }}' style='display: none'>
+  <button type="submit" class="btn btn-primary">{% trans '确认修改列表' %}</button>
+</form>
+</div>
+<div class="news-list col-md-3">
+  <div class="list-content source">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% trans '新闻源' %}</h3>
+      </div>
+      <form action="." method='GET' >
+        <input type="text" name='search' class="form-control col-lg-8 news-search" placeholder="输入新闻源" value={{ search }}>
+      </form>
+      <div class="panel-body">
+        <ul class='list-unstyled news-source'>
+          {% for i in news_source %}
+          <li>{{ i }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="news-list col-md-3">
+  <div class="list-content entity">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% trans '实体' %}</h3>
+      </div>
+      <div class="panel-body">
+        <ul class='list-unstyled'>
+          <li>{% trans '中国' %}</li>
+          <li>{% trans '美国' %}</li>
+          <li>{% trans '意大利' %}</li>
+          <li>{% trans '澳大利亚' %}</li>
+          <li>{% trans '加拿大' %}</li>
+          <li>{% trans '瑞士' %}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="news-list col-md-3">
+  <div class="list-content incident">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% trans '事件' %}</h3>
+      </div>
+      <div class="panel-body">
+        <ul class='list-unstyled'>
+          <li>{% trans '股票期权来袭' %}</li>
+          <li>{% trans '渣打建议' %}</li>
+          <li>{% trans '股票期权试点开闸' %}</li>
+          <li>{% trans '2015年第一批新股来袭 ' %}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-3">
+  <form action="">
+    <select id="" name="list_id" class="form-control watch_list">
+      {% for i in default_result.watch_news %}
+      <option data-id='{{ i.list_id }}' value="{{ i.list_id }}">{{ i.name }}</option>
+      {% endfor %}
+    </select>
+    <button type="button" class="btn btn-primary news-add-ok">{% trans '添加至我的新闻关注' %}</button>
+  </form>
+</div>
+{% endblock %}

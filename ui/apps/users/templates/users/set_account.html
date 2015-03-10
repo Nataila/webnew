@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block css-file %}
+  {{ block.super }}
+  <link rel="stylesheet/less" type="text/css" href="{% static 'users/css/users.less' %}">
+{% endblock %}
+{% block main %}
+<div class="col-md-5">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{% trans '账号设置' %}</h3>
+    </div>
+    <div class="panel-body">
+      <form class="form-horizontal" role="form" method="POST" action="{% url 'set_password' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-3 control-label">{% trans '用户名' %}</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="disabledInput" value="{{ request.user }}" disabled>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-3 control-label">{% trans '请输入旧密码' %}</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="inputPassword2" name='old_password' placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-3 control-label">{% trans '请输入新密码' %}</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="inputPassword2" name='new_password1' placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-3 control-label">{% trans '请再次输入新密码' %}</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="inputPassword3" name='new_password2' placeholder="Password">
+          </div>
+        </div>
+        <span id='message'>{{ message }}</span>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">{% trans '确认修改密码' %}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="col-md-7">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{% trans '我的通知' %}</h3>
+    </div>
+    <div class="panel-body new-panel-body">
+      {% for i in news_data %}
+      <p>{% trans '新闻标题：' %} {{ i.news_title }}</p>
+      <p>{% trans '情绪指数：' %} <span class='news_fasi'>{{ i.news_fasi }}</span></p>
+      <p>{% trans '新闻来源：' %} {{ i.source }}</p>
+      <p>{% trans '发布时间：' %} {{ i.news_time|date:"Y-m-d H:i:s" }}</p>
+      <p>{% trans '原文链接：' %} <a href="{{ i.news_link }}" target='_blank'>{{ i.news_link }}</a></p>
+      <p class='divider'></p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

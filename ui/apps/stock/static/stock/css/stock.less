@@ -1,0 +1,122 @@
+.main {
+  padding-top: 0px;
+  .watched {
+    color: #5cb85c;
+  }
+  .show_watch {
+    margin-bottom: 20px;
+  }
+  span.watch-content {
+    color: #df691a;
+    font-size: 20px;
+  }
+  div.content {
+    height: 100%;
+  }
+  .stock-list {
+    padding-left: 0px;
+    .panel-body {
+      padding: 10px 0 0 0;
+    }
+    li {
+      padding: 0 15px 0 15px;
+      &:hover {
+        background-color: #485563;
+      }
+    }
+    .add-icon {
+      font-size: 10px;
+      margin-left: 20px;
+      float: right;
+      cursor: pointer;
+      color: #df691a;
+      span {
+        margin-left: 5px;
+      }
+      &:hover {
+        color: #FFA569;
+      }
+    }
+    .watched-icon {
+      font-size: 10px;
+      margin-left: 20px;
+      float: right;
+      color: #5CB85C;
+      span {
+        margin-left: 5px;
+      }
+    }
+    #exchange {
+      width: 100%;
+      height: 100%;
+      border: 1px #4e5d6c solid;
+    }
+  }
+  .stock-chart {
+    height: 90%;
+    padding: 0px;
+    .glyphicon-fullscreen {
+      top: 10px;
+      z-index: 10;
+      right: 10px;
+      cursor: pointer;
+      position: absolute;
+    }
+    .line-chart {
+      height: 500px;
+      border: 1px #4e5d6c solid;
+    }
+  }
+  .stock-news {
+    padding-right: 0px;
+    float: right !important;
+    .news {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      border: 1px #4e5d6c solid;
+      .news-badge {
+        background-color: #DF691A;
+        float: right;
+        margin-right: 10px;
+      }
+      .readmore {
+        float: right;
+        font-size: 12px;
+        span+span {
+          margin-left: 10px;
+        }
+      }
+      span.new-fasi {
+        color: red;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+  .modal-dialog {
+    width: 100%;
+    height: 80%;
+    background-color: #2B3E50;
+  }
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 2, 2, 0.56);
+    #stock-full-screen {
+      width: 100%;
+      height: 100%;
+    }
+    #line-chart-in-modal {
+      background-color: red;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .remove {
+    font-size: 10px;
+    color: red;
+    float: right;
+    cursor: pointer;
+  }
+}

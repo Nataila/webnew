@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
+    <title></title>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css3.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/amazeui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/ipad.css' %}">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="HiraginoGBW3" id="top">
+<header>
+    <div class="navfix" data-am-sticky="{animation: 'slide-top'}">
+      <div class="logo"><a href="/accounts/#top"><img src="{% static 'users/sho/images/logo.png' %}" alt=""/></a></div>
+      <nav><ul><li><a href="/accounts/#aboutus">关于我们</a></li><li><a href="/accounts/#product">产品介绍</a></li><li><a href="/accounts/#contactus">联系我们</a></li><li><a class="log_reg" href="{% url 'pre_login' %}">登录/注册</a></li><li><a href="#">中文/EN</a></li></ul></nav>
+    </div>
+    <div class="slider">
+        <div class="i-banner">
+            <ul class="w1">
+                <li>
+                    <img class="imgbg" src="{% static 'users/sho/images/j/banner1.jpg' %}" alt=""/>
+                    <div class="bwrap">
+                   <img class="imgtext" src="{% static 'users/sho/images/j/banner1_text.png' %}" alt=""/>
+                    </div>
+                </li>
+                <li>
+                    <img class="imgbg" src="{% static 'users/sho/images/j/banner2.jpg' %}" alt=""/>
+                    <div class="bwrap">
+                        <img class="imgtext" src="{% static 'users/sho/images/j/banner2_text.png' %}" alt=""/>
+                    </div>
+                </li>
+                <li>
+                    <img class="imgbg" src="{% static 'users/sho/images/j/banner3.jpg' %}" alt=""/>
+                    <div class="bwrap">
+                        <img class="imgtext" src="{% static 'users/sho/images/j/banner3_text.png' %}" alt=""/>
+                    </div>
+                </li>
+                <li>
+                    <img class="imgbg" src="{% static 'users/sho/images/j/banner4.jpg' %}" alt=""/>
+                    <div class="bwrap">
+                        <img class="imgtext" src="{% static 'users/sho/images/j/banner4_text.png' %}" alt=""/>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="switch"><ul id="slider_switch"><li class="current"></li><li></li><li></li><li></li></ul></div>
+    </div>
+</header>
+<div class="body">
+<ul class="tbar">
+  <li><a class="btn1" href="{% url 'product' %}">个人产品介绍</a></li>
+  <li><a class="btn1" href="{% url 'inst' %}">机构产品介绍</a></li>
+  <li><a class="btn2" href="{% url 'trial'%}">免费试用</a></li>
+</ul>
+<div class="red-line"></div>
+<div class="product_overview">
+    <h1>PRODUCT  OVERVIEW</h1>
+    <p>产品概要</p>
+    <div class="product_overview_col">
+        <div class="overview_col fl">
+            <div class="overview_img"><img src="{% static 'users/sho/images/j/j-1.png' %}" alt=""/></div>
+            <div class="overview_title">
+                <strong>G-News</strong>
+                <p>个性新闻聚合</p>
+            </div>
+            <div class="overview_des">
+                推送真正<br/>【投其所好】<br/>的新闻
+            </div>
+            <div class="btn">
+                <a href="#" class="btn-red">免费试用</a>
+                <a href="#" class="btn-blue">了解更多</a>
+            </div>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="overview_col fl">
+            <div class="overview_img"><img src="{% static 'users/sho/images/j/j-2.png' %}" alt=""/></div>
+            <div class="overview_title">
+                <strong>G-Analytics</strong>
+                <p>智能舆情分析</p>
+            </div>
+            <div class="overview_des">
+                将新闻舆情<br/>【因人而异】<br/>解读为数字曲线
+            </div>
+            <div class="btn">
+                <a href="#" class="btn-red">免费试用</a>
+                <a href="#" class="btn-blue">了解更多</a>
+            </div>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="overview_col fl">
+            <div class="overview_img"><img src="{% static 'users/sho/images/j/j-3.png' %}" alt=""/></div>
+            <div class="overview_title">
+                <strong>G-SimuTrading</strong>
+                <p>模拟测试平台</p>
+            </div>
+            <div class="overview_des">
+                用技术分析<br/>【千锤百炼】<br/>舆情价值
+            </div>
+            <div class="btn">
+                <a href="#" class="btn-red">免费试用</a>
+                <a href="#" class="btn-blue">了解更多</a>
+            </div>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="overview_col fl">
+            <div class="overview_img"><img src="{% static 'users/sho/images/j/j-4.png' %}" alt=""/></div>
+            <div class="overview_title">
+                <strong>G-Customization</strong>
+                <p>定制/托管</p>
+            </div>
+            <div class="overview_des">
+                满足客户<br/>【独一无二】<br/>的投资需求
+            </div>
+            <div class="btn">
+                <a href="#" class="btn-red">免费试用</a>
+                <a href="#" class="btn-blue">了解更多</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="red-line"></div>
+<div class="prodcut_description">
+    <h1>PRODUCT DESCRIPTION</h1>
+    <p>产品细节</p>
+    <div class="pro_list">
+        <div class="pro_box pro_bg1 fl">
+             <div class="pro_big_title">
+                 <strong>G-News</strong>
+                 <p>个性新闻聚合</p>
+             </div>
+             <div class="pro_big_des">
+                 <b>推送真正【投其所好】的新闻</b>
+             </div>
+        </div>
+        <div class="pro_img fr">
+            <img alt="" src="{% static 'users/sho/images/ex/p4.jpg' %}">
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="pro_four">
+                <table>
+                    <tr>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <p>以用户感兴趣的新闻为中心</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <p>第一时间了解主流财经媒体新闻、证券交易所公告、社交媒体等多样信息</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <p>提供相关新闻主题报道网站链接，精确甄别新闻报道中事件类别</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <p>每日免费推送，无语言障碍、手机移动端随心阅读</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+    </div>
+    <div class="pro_list">
+        <div class="pro_img fl">
+            <img alt="" src="{% static 'users/sho/images/ex/p2.jpg' %}">
+        </div>
+        <div class="pro_box pro_bg2 fr">
+            <div class="pro_big_title">
+                <strong>G-Analytics</strong>
+                <p>智能舆情分析</p>
+            </div>
+            <div class="pro_big_des">
+               <b>将新闻舆情【因人而异】解读为数字曲线</b>
+              <p>集数据采集、存储、分析和呈现于一体、为从事金融交易类(股票、债务、外汇、大宗商品等)和信用类客户提供：舆情指数分析、技术分析、追踪新闻、证券推荐列表及热图等可视化新闻舆情分析模块，同时提供分析结果的API/文本输出</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="pro_four2">
+                <table>
+                    <tr>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                            <strong>新闻来源多样化，覆盖面广</strong>
+                            <p>涵盖主流财经媒体新闻、证券交易所公告、法律文本、政府统计数据、社交媒体、专业论坛等新闻源。</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <strong>有效处理新闻数据，分析准确</strong>
+                                <p>“基于事件”的分析理念，融合大数据概念，结合数据挖掘技术，系统化规划化的将海量新闻信息处理成为数据，提升精准度。</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <strong>提高用户好感体验，操作便捷</strong>
+                                <p>通过使用习惯，可视化界面设计，分析决策筛选更人性化；手机登陆简易操作。</p>
+                            </div>
+                        </td>
+                        <td><div  class="overview_line"></div></td>
+                        <td width="25%" valign="top">
+                            <div class="pro_text">
+                                <strong>低延时，毫秒级处理新闻</strong>
+                                <p>应用规模化并行技术，节省客户时间，高效分析信息，助力决策。</p>
+                            </div>
+                        </td>
+                      </tr>
+                </table>
+    </div>
+    <div class="pro_three">
+        <div class="pro_text fl">
+            <strong>系统稳定性高，客户信息安全保密</strong>
+            <p>采用先进的安全技术完善监测系统，保护用户在账户中存储的个人信息、账户信息以及交易记录，截断非正常访问，保证系统的有效性和健壮性。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>针对性分析服务，“因人而异”</strong>
+            <p>依托系统化专业金融事件模型库，客户可依据投资策略和分析逻辑设定新闻情绪偏好，由系统自动提取汇总有效信息，真正实现舆情智能化。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>自然语言处理，百分百机器可读</strong>
+            <p>API无缝连接客户交易量化模型，优化算法将文本信息转换成数字进行分析。</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="pro_list">
+        <div class="pro_img fr">
+            <img alt="" src="{% static 'users/sho/images/ex/p3.jpg' %}">
+        </div>
+        <div class="pro_box pro_bg1 fl">
+            <div class="pro_big_title">
+                <strong>G-SimuTrading</strong>
+                <p>模拟测试平台</p>
+            </div>
+            <div class="pro_big_des">
+                <b>用技术分析 【千锤百炼】舆情价值</b>
+<p>应用技术分析的思路，验证新闻舆情价值的有效性，得到“行之有效”的投资策略。</p>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="pro_five">
+                <table>
+                    <tr>
+                        <td valign="top" width="20%">
+                            <div class="pro_text">
+                                <strong class="redtitle">分析参数设置丰富<br/>逼真模拟投资环境</strong>
+                                <p>新闻舆情指数与其他主流交易信息并驾齐驱，全方位数据统计，更好的用虚拟资金提炼投资策略。</p>
+                            </div>
+                        </td>
+                        <td><div class="overview_line"></div></td>
+                        <td valign="top" width="20%">
+                            <div class="pro_text">
+                                <strong class="redtitle">弥补技术分析盲区<br/>提高市场预测精准度</strong>
+                                <p>灵活运用舆情情绪值，直接填充技术指标中无法预测或者预测失灵的区域。</p>
+                            </div>
+                        </td>
+                        <td><div class="overview_line"></div></td>
+                        <td valign="top" width="20%">
+                            <div class="pro_text">
+                                <strong class="redtitle">标准化交易系统<br/>提供回溯/向前测试</strong>
+                                <p>考试交易策略、投资收益，不断验证策略，确认有效性。</p>
+                            </div>
+                        </td>
+                        <td><div class="overview_line"></div></td>
+                        <td valign="top" width="20%">
+                            <div class="pro_text">
+                                <strong class="redtitle">系统稳定性高<br/>客户信息不外泄</strong>
+                                <p>提供24小时维护，服务不停歇。遇到宕机事故及时现场进行处理和事后分析。</p>
+                            </div>
+                        </td>
+                        <td><div class="overview_line"></div></td>
+                        <td valign="top" width="20%">
+                            <div class="pro_text">
+                                <strong class="redtitle">注重用户友好度<br/>策略可视化呈现</strong>
+                                <p>策略设计操作简便，统计计算模型可拖拽；显示交易策略做出的买入点、卖出点、止损点等。</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+    </div>
+    <div class="pro_list">
+        <div class="pro_box pro_bg2 fr">
+            <div class="pro_big_title">
+                <strong>G-Cusomization</strong>
+                <p>定制/托管</p>
+            </div>
+            <div class="pro_big_des">
+                <b>满足客户【独一无二】的投资需求</b>
+                <p>集合云计算平台、技术咨询、实时交易信号三大服务板块，根据交易类及信用类客户交易策略和业务需求，提供定制化端到端解决方案。</p>
+            </div>
+        </div>
+        <div class="pro_img fl">
+            <img alt="" src="{% static 'users/sho/images/ex/p5.jpg' %}">
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="pro_three">
+        <div class="pro_text fl">
+            <strong>托管业务绝对优越性，省心省力</strong>
+            <p>无需客户亲力亲为，专业技术团队幕后深度管理与维护，提供数据可用性。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>独一无二的投资方案，度身定制</strong>
+            <p>根据客户特定的投资需求，灵活设计策略分析和投资解决方案。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>VIP专设团队，精雕细琢</strong>
+            <p>专业团队提供技术咨询服务，定制无死角贴合用户需求的解决方案。</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="pro_three">
+        <div class="pro_text fl">
+            <strong>无前期投资，降低成本</strong>
+            <p>无需硬件采购的前期投资，维护和管理，高回报率。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>全面兼容各类操作系统，专业稳定</strong>
+            <p>实现集安全智能分析保障于一体。帮助机构构建稳固的安全态势，妥善处理应用安全，数据安全，IT网络安全等管理。</p>
+        </div>
+        <div class="overview_line fl"></div>
+        <div class="pro_text fl">
+            <strong>专业加密算法，安全性高</strong>
+            <p>用户自定义策略等商业机密级别数据，进行敏感信息分库，确保客户信息安全，用户资料无外泄。</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="red-line"></div>
+<div class="application">
+    <h3>APPLICATION</h3>
+    <p>应用场景</p>
+    <div class="app_box">
+        <div class="app_item bcg1 fl">
+            <h4>交易类客户</h4>
+            <div class="appimg"><img src="{% static 'users/sho/images/j/k-1.png' %}" alt=""/></div>
+            <dl>
+                <dt>投资分析</dt>
+                <dd><strong>适用客户：</strong>投资银行、债券、资产管理、对冲基金、保险等。</dd>
+                <dd><strong>选股排序：</strong>新闻分析，机器自动代替人工负荷，优化评价模型。</dd>
+                <dd><strong>辅助决策：</strong>数据支持、历史实时数据客观对比，减少主观偏好。</dd>
+                <dd><strong>交易分析：</strong>更新投资组合，实时调整策略，包含交易成本分析、交易后定期分析等。</dd>
+                <dd><strong>基础研究：</strong>前瞻性指标定义，精炼分析模型。</dd>
+            </dl>
+            <div class="hdotline"><img src="{% static 'users/sho/images/j/hdot-line.png' %}" alt=""/></div>
+            <dl>
+                <dt>量化分析</dt>
+                <dd><strong>适用客户：</strong>投资银行，债券、对冲基金等。</dd>
+                <dd>针对算法交员的多样化投资频率，实时生成alpha信号，使之更加高效准确的做出投资判断。</dd>
+            </dl>
+        </div>
+        <div class="app_item bcg2 fl">
+            <h4>信用类客户</h4>
+            <div class="appimg"><img src="{% static 'users/sho/images/j/k-2.png' %}" alt=""/></div>
+            <dl>
+                <dt>风险控制</dt>
+                <dd><strong>适用客户：</strong>投资银行、债券、咨询顾问等。</dd>
+                <dd>扩展信用风险领域各类应用。事件舆情汇总，为风控提供依据，更具战略性和整体性。</dd>
+                <dd>让客户更好的掌控市场风险，信用风险、运营风险、声誉风险、流动性风险等，实时捕捉变化，保障交易和战略决策。</dd>
+            </dl>
+            <div class="hdotline"><img src="{% static 'users/sho/images/j/hdot-line.png' %}" alt=""/></div>
+            <dl>
+                <dt>合规监管</dt>
+                <dd><strong>适用客户：</strong>监管机构，咨询顾问、保险等。</dd>
+                <dd>大数据、自然语言处理完爆行业数据积累，提高监测时效性和预测力，造就可靠信用评级。</dd>
+            </dl>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="red-line"></div>
+<div class="pro_price" id="pro_price2">
+    <h3>FLEXIBLE  PRICING</h3>
+    <p>产品价格</p>
+    <div class="price_list">
+        <div class="price_item fl">
+            <div class="price_box">
+                <strong>G-News</strong>
+                <p>个性聚合新闻</p>
+            </div>
+            <div class="price_pr">免费</div>
+            <div class="price_line"></div>
+            <a class="btnred" href="#">免费试用</a>
+        </div>
+        <div class="price_vline fl"></div>
+        <div class="price_item fl">
+            <div class="price_box">
+                <strong>G-Analytics</strong>
+                <p>智能舆情分析</p>
+            </div>
+            <div class="price_pr">6000元/月/license</div>
+            <div class="price_line"></div>
+            <a class="btnred" href="#">免费试用</a>
+        </div>
+        <div class="price_vline fl"></div>
+        <div class="price_item fl">
+            <div class="price_box">
+                <strong>G-SimuTrading</strong>
+                <p>模拟测试平台</p>
+            </div>
+            <div class="price_pr">6000元/月/license</div>
+            <div class="price_line"></div>
+            <a class="btnred" href="#">免费试用</a>
+        </div>
+        <div class="price_vline fl"></div>
+        <div class="price_item fl">
+            <div class="price_box">
+                <strong>G-Cusomization</strong>
+                <p>定制/咨询</p>
+            </div>
+            <div class="price_pr">请联系我们</div>
+            <div class="price_line"></div>
+            <a class="btnred" href="#">了解更多</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="red-line"></div>
+</div>
+<footer class="HiraginoGBW3">
+    <h1 id="contactus">contact us</h1>
+    <div class="footer-top">
+        <table>
+            <tr>
+                <td>
+                    <div class="footer-info">
+                        <ul>
+                            <li class="win80"><em class="ico-1"></em>46 Albert Building, 49 Queen Victoria Street, London, EC4N 4SA</li>
+                            <li><em class="ico-2"></em>+44 77 95 441346</li>
+                            <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                        </ul>
+                        <ul>
+                            <li><em class="ico-1"></em>中国北京朝阳区百子湾路32号</li>
+                            <li><em class="ico-2"></em>+86 010 58765833</li>
+                            <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="footer-rss">
+                        <a class="facebook-ico" href="#"></a><a class="google-ico" href="#"></a><a class="twitter-ico" href="#"></a>
+                        <a class="weixin-ico" href="#"></a><a class="sina-ico" href="#"></a><a class="qq-ico" href="#"></a>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="footer-bottom">
+        <div class="copyright">
+            <div class="footer_logo"></div>
+            <div class="footer_copyright">Copyright &copy; 2015-15 GLAUCUSIS SOLUTION All rights reserved.</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/slider.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.md5.js' %}"></script>
+<script type="text/javascript"> function youziku46604() { var resultStr = $(".HiraginoGBW3").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("9b037aa103aa42fea626e0d0ed4e5e19"+"HiraginoGBW3" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "HiraginoGBW3", "gid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "9b037aa103aa42fea626e0d0ed4e5e19" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku46604(); } })() </script>
+<script type="text/javascript"> function youziku425() { var resultStr = $(".STXihei").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("cc97f95dbe664f389acff92baaada7ac"+"STXihei" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "cc97f95dbe664f389acff92baaada7ac", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "STXihei", "gid": "cc97f95dbe664f389acff92baaada7ac", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "cc97f95dbe664f389acff92baaada7ac" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku425(); } })() </script>
+<script>
+    jQuery(function($) {
+        $(window).resize(function(){
+            var w1=$(".w1:first").width();
+            if(w1>768)
+                $(".w1").height(parseInt(w1*790/1500));
+        })
+    });
+    jQuery(".slider").slide({
+        titCell: ".switch ul",
+        mainCell: ".i-banner ul",
+        effect: "fold",
+        autoPlay: true,
+        autoPage: true,
+        interTime:5000,
+        trigger: "click",
+        startFun: function(i) {
+            var curLi = jQuery(".slider .swtich li").eq(i);
+            if ( !! curLi.attr("_src")) {
+                curLi.css("background", curLi.attr("_src")).removeAttr("_src");
+            }
+        }
+    });
+</script>

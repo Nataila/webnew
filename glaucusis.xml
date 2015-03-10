@@ -1,0 +1,12 @@
+<uwsgi>
+        <socket>127.0.0.1:9090</socket>
+        <master>true</master>
+        <processes>3</processes>
+        <chdir>/home/ubuntu/project/glaucusis/newsfeedsite/webnew/ui</chdir>
+        <pythonpath>/home/ubuntu/project/glaucusis/newsfeedsite/webnew</pythonpath>
+        <module>ui.wsgi:application</module>
+        <wsgi-file>ui/glaucusis/wsgi.py</wsgi-file>
+        <plugins>python</plugins>
+        <env>DJANGO_SETTINGS_MODULE=settings</env>
+	<daemonize>/home/ubuntu/project/glaucusis/newsfeedsite/webnew/glau.log</daemonize>
+</uwsgi>

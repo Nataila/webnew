@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
+    <title>产品介绍</title>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css3.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/amazeui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/css.css' %}"/>
+    <link rel="stylesheet" href="{% static 'users/sho/css/ipad.css' %}">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="HiraginoGBW3" id="top">
+
+<header>
+    <div class="navfix">
+        <div class="logo"><a href="/accounts/#top"><img src="{% static 'users/sho/images/logo.png' %}" alt=""/></a></div>
+        <div class="clear"></div>
+      <nav><ul><li><a href="/accounts/#aboutus">关于我们</a></li><li><a href="/accounts/#product">产品介绍</a></li><li><a href="/accounts/#contactus">联系我们</a></li><li><a class="log_reg" href="{% url 'pre_login' %}">登录/注册</a></li><li><a href="#">中文/EN</a></li></ul></nav>
+    </div>
+</header>
+<section class="product">
+<ul class="tbar">
+  <li><a class="btn1" href="{% url 'product' %}">个人产品介绍</a></li>
+  <li><a class="btn1" href="{% url 'inst' %}">机构产品介绍</a></li>
+  <li><a class="btn2" href="{% url 'trial'%}">免费试用</a></li>
+</ul>
+    <div class="red-line"></div>
+    <div class="product_overview">
+        <h1>PRODUCT  OVERVIEW</h1>
+        <p>产品概要</p>
+        <table class="pro_overview_table">
+            <tr>
+                <td width="5%" align="center" class="dotmar"><img src="{% static 'users/sho/images/p/dot.png' %}" alt=""/></td>
+                <td class="solid_line">
+                    <div class="pro_pie"><div><img  src="{% static 'users/sho/images/p/i-1.png' %}" alt=""/></div></div>
+                    <div class="pro_t1">
+                        <strong>G-News</strong>
+                        <p>个性新闻聚合</p>
+                    </div>
+                    <div class="pro_line"></div>
+                    <div class="pro_des">做最超强的投资者</div>
+                    <div class="btn"><a class="btnred" href="#">免费试用</a></div>
+                    <div class="btn"><a class="btnblue" href="#">了解更多</a></div>
+                </td>
+                <td class="solid_line">
+                    <div class="pro_pie"><div><img  src="{% static 'users/sho/images/p/i-2.png' %}" alt=""/></div></div>
+                    <div class="pro_t1">
+                        <strong>G-Analytics</strong>
+                        <p>智能舆情分析</p>
+                    </div>
+                    <div class="pro_line"></div>
+                    <div class="pro_des">打开你的投资眼界</div>
+                    <div class="btn"><a class="btnred" href="#">免费试用</a></div>
+                    <div class="btn"><a class="btnblue" href="#">了解更多</a></div>
+                </td>
+                <td>
+                    <div class="pro_pie"><div><img  src="{% static 'users/sho/images/p/i-3.png' %}" alt=""/></div></div>
+                    <div class="pro_t1">
+                        <strong>G-SimuTrading</strong>
+                        <p>模拟测试平台</p>
+                    </div>
+                    <div class="pro_line"></div>
+                    <div class="pro_des">让你的投资更放心</div>
+                    <div class="btn"><a class="btnred" href="#">免费试用</a></div>
+                    <div class="btn"><a class="btnblue" href="#">了解更多</a></div>
+                </td>
+                <td width="5%" align="center" class="dotmar"><img src="{% static 'users/sho/images/p/dot.png' %}" alt=""/></td>
+            </tr>
+        </table>
+    </div>
+    <div class="red-line"></div>
+    <div class="prodcut_description">
+        <h1>PRODUCT DESCRIPTION</h1>
+        <p>产品细节</p>
+        <div class="pro_list">
+            <div class="pro_box pro_bg1 fl">
+                <div class="pro_btn">
+                <h3>G-News</h3>
+                <p>个性新闻聚合</p>
+                </div>
+                <div class="pline"></div>
+                <ul class="proul">
+                    <li><em><img src="{% static 'users/sho/images/p/b1.png' %}" alt=""/></em>即时推送</li>
+                    <li><em><img src="{% static 'users/sho/images/p/b2.png' %}" alt=""/></em>新闻内容定制化</li>
+                    <li><em><img src="{% static 'users/sho/images/p/b3.png' %}" alt=""/></em>页面简洁</li>
+                </ul>
+            </div>
+            <div class="pro_img fr">
+                <img src="{% static 'users/sho/images/ex/p1.jpg' %}" alt="" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="pro_five pro_bline">
+            <table>
+                <tr>
+                    <td width="20%" valign="top">
+                        <div class="pro_text">
+                        <div class="img"><img src="{% static 'users/sho/images/p/c1.png' %}" alt="" /></div>
+                        <strong>火箭速度发送新闻</strong>
+                        <p>核心技术采用即时推送实现毫秒级推送速度，将世界第一手新闻在第一时间与你分享</p>
+                        </div>
+                    </td>
+                    <td class="pro_vline"></td>
+                    <td width="20%" valign="top">
+                        <div class="pro_text">
+                            <div class="img"><img src="{% static 'users/sho/images/p/c2.png' %}" alt="" /></div>
+                            <strong>新闻以你为中心</strong>
+                            <p>可以从各种维度制定你的私人订阅列表，你来选择你最需要、最关注的话题</p>
+                        </div>
+                    </td>
+                    <td class="pro_vline"></td>
+                    <td width="20%" valign="top">
+                        <div class="pro_text">
+                            <div class="img"><img src="{% static 'users/sho/images/p/c3.png' %}" alt="" /></div>
+                            <strong>无障碍阅读通道</strong>
+                            <p>精准翻译国际主流媒体的金融消息，帮你连接世界，不做落伍者</p>
+                        </div>
+                    </td>
+                    <td class="pro_vline"></td>
+                    <td width="20%" valign="top">
+                        <div class="pro_text">
+                            <div class="img"><img src="{% static 'users/sho/images/p/c4.png' %}" alt="" /></div>
+                            <strong>新闻覆盖超门户网站</strong>
+                            <p>主流财经媒体，交易所公告、法律文书、社交媒体、专业论坛各类新闻，这里应有尽有</p>
+                        </div>
+                    </td>
+                    <td class="pro_vline"></td>
+                    <td width="20%" valign="top">
+                        <div class="pro_text">
+                            <div class="img"> <img src="{% static 'users/sho/images/p/c5.png' %}" alt="" /></div>
+                            <strong>让新闻“袋”着走</strong>
+                            <p>支持移动设备读取，让新闻跟你从此成为密友</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="red-pig-box"></div>
+        <div class="pro_list">
+            <div class="pro_box pro_bg2 fl">
+                <div class="pro_btn">
+                    <h3>G-Analytics</h3>
+                    <p>智能舆情分析</p>
+                </div>
+                <div class="pline"></div>
+                <ul class="proul">
+                    <li><em><img src="{% static 'users/sho/images/p/d1.png' %}" alt=""/></em>新闻舆情曲线</li>
+                    <li><em><img src="{% static 'users/sho/images/p/d2.png' %}" alt=""/></em>热图</li>
+                    <li><em><img src="{% static 'users/sho/images/p/d3.png' %}" alt=""/></em>排行榜</li>
+                    <li><em><img src="{% static 'users/sho/images/p/d4.png' %}" alt=""/></em>新闻追踪和深度分析</li>
+                </ul>
+            </div>
+            <div class="pro_img fr">
+                <img src="{% static 'users/sho/images/ex/p2.jpg' %}" alt="" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="pro_five pro_bline">
+                    <table>
+                        <tr>
+                            <td width="20%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/e1.png' %}" alt="" /></div>
+                                    <strong>像图书馆一样全面</strong>
+                                    <p>利用系统化专业金融事件模型库，挖掘关于金融类事件最全信息</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="20%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/e2.png' %}" alt="" /></div>
+                                    <strong>分析绝不偏离靶心</strong>
+                                    <p>NLP技术形成自动分类、聚类信息检索等科学分析方式，更全面精确的得到分析结果</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="20%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/e3.png' %}" alt="" /></div>
+                                    <strong>极速新闻实时处理</strong>
+                                    <p>应用大数据技术,实现新闻实时处理，低延时，处理每篇新闻都在毫秒内完成</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="20%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/e4.png' %}" alt="" /></div>
+                                    <strong>探测你的投资盲点</strong>
+                                    <p>依托金融事件模型库，经过顶尖计算机和财经专业人士优化算法，推荐给你最有利最靠谱的投资热点</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="20%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"> <img src="{% static 'users/sho/images/p/e5.png' %}" alt="" /></div>
+                                    <strong>告别紧张的阅读方式</strong>
+                                    <p>为新闻智能排序，强大的可视化工具将文字中的信息直观呈现，你将会拥有一个更加轻松的阅读环境</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+        </div>
+        <div class="blue-pig-box"></div>
+        <div class="pro_list">
+            <div class="pro_box pro_bg3 fl">
+                <div class="pro_btn">
+                    <h3>G-SimuTrading</h3>
+                    <p>模拟测试平台</p>
+                </div>
+                <div class="pline"></div>
+                <ul class="proul">
+                    <li><em><img src="{% static 'users/sho/images/p/f1.png' %}" alt=""/></em>标准化交易策略</li>
+                    <li><em><img src="{% static 'users/sho/images/p/f2.png' %}" alt=""/></em>自定义交易策略灵活组合</li>
+                    <li><em><img src="{% static 'users/sho/images/p/f3.png' %}" alt=""/></em>模拟结果可视化</li>
+                </ul>
+            </div>
+            <div class="pro_img fr">
+                <img src="{% static 'users/sho/images/ex/p3.jpg' %}" alt="" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="pro_five" id="pro_four">
+                    <table>
+                        <tr>
+                            <td width="25%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/g1.png' %}" alt="" /></div>
+                                    <strong> 输了决策却不输钱</strong>
+                                    <p>最有创新价值的投资测试平台，用虚拟货币在真实的平台尽情的测试自己的投资能力</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="25%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/g2.png' %}" alt="" /></div>
+                                    <strong>让预测不仅是猜测</strong>
+                                    <p>真实呈现新闻的预测力，它带给你的是惊人的准确性，及更具实战操作的绝佳价值</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="25%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/g3.png' %}" alt="" /></div>
+                                    <strong>培养最佳的决策能力</strong>
+                                    <p>使用时间越长，你越能发现有了数据的支持，你在投资方面是个天才</p>
+                                </div>
+                            </td>
+                            <td class="pro_vline"></td>
+                            <td width="25%" valign="top">
+                                <div class="pro_text">
+                                    <div class="img"><img src="{% static 'users/sho/images/p/g4.png' %}" alt="" /></div>
+                                    <strong>多维度操作精确分析</strong>
+                                    <p>实现技术分析、基本面、舆情指数三大板块在同一平面多方对比，让你对投资十拿九稳</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+       </div>
+    </div>
+    <div class="pro_tec">
+        <h3>CORE  TECHNOLOGY</h3>
+        <p>核心技术</p>
+        <div class="tec_bar"><span class="tl">比你更会读文章</span><span class="fr">更多且更快</span></div>
+        <div class="ball_wraper">
+            <div class="ball_l" data-am-scrollspy="{animation:'fade'}"></div>
+            <div class="ball_r" data-am-scrollspy="{animation:'fade'}"></div>
+            <div class="ball_m">
+                <div class="ball_line">
+                    <div class="ball" data-am-scrollspy="{animation:'fade'}"> </div>
+                    <span class="text1" data-am-scrollspy="{animation:'fade',delay:1000}">采用比information retrieval<br/>更先进的自然语言处理技术</span>
+                    <span class="text2" data-am-scrollspy="{animation:'fade',delay:1000}">经过顶尖的计算机和财经专业人士优化的算法</span>
+                    <span class="text3" data-am-scrollspy="{animation:'fade',delay:1000}">分析结果实现无遗漏，无偏差</span>
+                    <span class="text4" data-am-scrollspy="{animation:'fade',delay:1000}">大数据挖掘能粘黏到全世界最主流<br/>的金融新闻事件</span>
+                    <span class="text5" data-am-scrollspy="{animation:'fade',delay:1000}">利用N台处理机同时计算，毫秒处理海量新闻<br/>不在话下</span>
+                    <span class="text6" data-am-scrollspy="{animation:'fade',delay:1000}">并行处理能回避个人判断的偏好，<br/>客观判断市场整体真实的情绪变化</span>
+                    <div class="samll_line"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="pro_price">
+        <h3>FLEXIBLE  PRICING</h3>
+        <p>产品价格</p>
+        <div class="price_list">
+            <div class="price_item fl">
+                <div class="price_box">
+                    <strong>G-News</strong>
+                    <p>个性聚合新闻</p>
+                </div>
+                <div class="price_pr">免费</div>
+                <div class="price_line"></div>
+                <a class="btnred" href="#">免费试用</a>
+            </div>
+            <div class="price_vline fl"></div>
+            <div class="price_item fl">
+                <div class="price_box">
+                    <strong>G-Analytics</strong>
+                    <p>智能舆情分析</p>
+                </div>
+                <div class="price_pr">600元/月</div>
+                <div class="price_line"></div>
+                <a class="btnred" href="#">免费试用</a>
+            </div>
+            <div class="price_vline fl"></div>
+            <div class="price_item fl">
+                <div class="price_box">
+                    <strong>G-SimuTrading</strong>
+                    <p>模拟测试平台</p>
+                </div>
+                <div class="price_pr">600元/月</div>
+                <div class="price_line"></div>
+                <a class="btnred" href="#">免费试用</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>
+<div class="red-line"></div>
+<footer class="HiraginoGBW3">
+    <h1 id="contactus">contact us</h1>
+    <div class="footer-top">
+        <table>
+            <tr>
+                <td>
+                    <div class="footer-info">
+                        <ul>
+                            <li class="win80"><em class="ico-1"></em>46 Albert Building, 49 Queen Victoria Street, London, EC4N 4SA</li>
+                            <li><em class="ico-2"></em>+44 77 95 441346</li>
+                            <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                        </ul>
+                        <ul>
+                            <li><em class="ico-1"></em>中国北京朝阳区百子湾路32号</li>
+                            <li><em class="ico-2"></em>+86 010 58765833</li>
+                            <li><em class="ico-3"></em>infoUK@glaucusis.com</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="footer-rss">
+                        <a class="facebook-ico" href="#"></a><a class="google-ico" href="#"></a><a class="twitter-ico" href="#"></a>
+                        <a class="weixin-ico" href="#"></a><a class="sina-ico" href="#"></a><a class="qq-ico" href="#"></a>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+    <div class="footer-bottom">
+        <div class="copyright">
+            <div class="footer_logo"></div>
+            <div class="footer_copyright">Copyright &copy; 2015-15 GLAUCUSIS SOLUTION All rights reserved.</div>
+        </div>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'users/sho/js/jquery.md5.js' %}"></script>
+<script type="text/javascript"> function youziku46604() { var resultStr = $(".HiraginoGBW3").text(); var md5 = ""; resultStr = Trim(resultStr); resultStr = SelectWord(resultStr); md5 = $.md5("9b037aa103aa42fea626e0d0ed4e5e19"+"HiraginoGBW3" + resultStr); $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "HiraginoGBW3", "gid": "9b037aa103aa42fea626e0d0ed4e5e19", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "9b037aa103aa42fea626e0d0ed4e5e19" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku46604(); } })() </script>
+<script type="text/javascript" src="{% static 'users/sho/js/amazeui.min.js' %}"></script>
+<script>
+    $(function(){
+        $('.pro_pie').hover(function(){
+            $(this).css('backgroundColor','#abc');
+        },function(){
+            $(this).css('backgroundColor','#bec8ce')
+        })
+    })
+</script>
+</html>

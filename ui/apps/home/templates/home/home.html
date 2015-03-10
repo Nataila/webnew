@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block css-file %}
+  {{ block.super }}
+  <link rel="stylesheet/less" type="text/css" href="{% static 'home/css/home.less' %}">
+{% endblock %}
+{% block main %}
+<div class="search">
+  <div class="search-logo">
+    <img src="{% static "images/logo.png" %}" alt="">
+  </div>
+  <div class="search-content">
+    <form action="." method="GET" role='form'>
+      <div class="form-group">
+        <input class="form-control" id="focusedInput" type="text" name="search" placeholder="{% trans '搜索公司/代码' %}" value={{ search }}>
+      </div>
+    </form>
+  </div>
+  {% if instr_data %}
+  <div class="container">
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>{% trans '证券名称' %}</th>
+          <th>{% trans '证券代码' %}</th>
+          <th>{% trans '证券类型' %}</th>
+          <th>{% trans '所属国家' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in instr_data %}
+        <tr data-id={{ i.id }}>
+          <td><a href="{% url 'stock' %}?in_id={{ i.id }}">{{ i.instrument_name }}</a></td>
+          <td>{{ i.instrument_id }}</td>
+          <td>{{ i.instrument_type }}</td>
+          <td>{{i.exchange_id.country_iso_code.country_name}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style='height: 800px;'></div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
