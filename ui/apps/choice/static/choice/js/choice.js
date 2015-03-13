@@ -1,22 +1,5 @@
 $(document).ready(function () {
-  //$('.stock-list li ul').hide();
-  ////不包含子菜单时鼠标指针和项目图标
-  //$('.stock-list li:not(:has(ul))').css({ 'cursor': 'default', 'list-style-image': 'none' });
-  ////包含子菜单时鼠标指针和项目图标
-  //$('.stock-list li:has(ul)').css({ 'cursor': 'pointer', 'list-style-image': 'url(../static/choice/images/plus.gif)' });
-  //$('.stock-list li:has(ul)').click(function (event) {
-  //  if (this == event.target) {
-  //    $(this).css('list-style-image', ($(this).children().is(':hidden') ? 'url(../static/choice/images/minus.gif)' : 'url(../static/choice/images/plus.gif)'));
-  //    $(this).children().slideToggle('normal');
-  //  }
-  //})
-  //$(".topnav").accordion({
-  //  accordion:false,
-  //  speed: 500,
-  //  closedSign: '[+]',
-  //  openedSign: '[-]'
-  //});
-  //
+
   $('.watch-list-ok').on('click', function () {
     var id = $('#watch-select').val();
     var instrName = $('#watchlist').data('name');
@@ -28,5 +11,38 @@ $(document).ready(function () {
         $('.instr_error').text(data.msg)
       }
     })
-  })
+  });
+
+  // choice页面筛选
+  $('#choice-search').keydown(function (e) {
+    if (e.keyCode === 13) {
+      var search_type = $(this).val();
+      if (isNaN(search_type)) {
+        var s_data = search_type;
+      }
+      else {
+        var s_data;
+        $.ajax({
+          method: 'get',
+          url: 'code_to_name',
+          data: {'code': search_type},
+          async: false,
+          success: function (data) {
+            s_data = data;
+          }
+        })
+      }
+      $('.country ul').css('display', 'none');
+      $('.instrument-name a').each(function (i, j) {
+        var content = $(j).text().slice(0, -4);
+        if (content === s_data){
+          $(this).closest('.country').find('.country-a').trigger('click');
+          $(this).closest('.exchange-name').find('.exchange-a').trigger('click');
+          $(this).closest('.indu-name').find('.indu-a').trigger('click');
+          $(this).addClass('search_done');
+        }
+      })
+    }
+  });
+
 })

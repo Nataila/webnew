@@ -15,6 +15,7 @@ require(
   ],
   function (ec, theme) {
     var myChart = ec.init(document.getElementById('stock-line'), theme);
+    var ecConfig = require('echarts/config');
     var option = {
       title : {
         text: 'XX股票分析',
@@ -100,17 +101,25 @@ require(
       });
     }
 
-    getChartData($('[name=instr_id]').val());
+    var $tpl = $('#tplNews').html();
+    var get_news = function (data_time) {
+      $.getJSON('get_news', {'time': data_time}, function (data) {
+        $("#news-content").html(_.template($tpl, {'data': data}));
+        $("#news-accordion").find('.panel-collapse:eq(0)').addClass('in');
+      })
+    }
 
-    //$('.instrument-name a').on('click', function () {
-    //  var instrId = $(this).data('id');
-    //  getChartData(instrId);
-    //})
+    myChart.on(ecConfig.EVENT.CLICK, function (p, o) {
+      if (['最小值', '最大值'].indexOf(p.name) === -1) {
+        get_news(p.name)
+      }
+    });
+
+    getChartData($('[name=instr_id]').val());
 
     $("#full-line-chart").on('shown.bs.modal', function () {
       var fullChart = ec.init(document.getElementById('stock-full-screen'), theme);
       fullChart.setOption(option);
     });
-
   }
 );

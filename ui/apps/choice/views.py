@@ -28,8 +28,6 @@ def choice(request, template):
         exchange_to_country[i.country_name] = []
     for i in exchange_data:
         result[i.exchange_name] = []
-    #for i in industry_data:
-    #    industry_exchange[i.industry_classification_name] = []
     for i in instr_data:
         mid[i.exchange_id.country_iso_code.country_name] = []
     for i in instr_data:
@@ -107,13 +105,13 @@ def change_hot_chart(request):
             'name': 'flare',
             'children': []
             }
-    json_file = os.path.join('/home/ubuntu/project/glaucusis/newsfeedsite/webnew/ui/static/choice', 'flare.json')
+    #json_file = os.path.join('/home/ubuntu/project/glaucusis/newsfeedsite/webnew/ui/static/choice', 'flare.json')
+    json_file = os.path.join('/var/data/users/chenc3/opt/webnew/ui/apps/choice/static/choice', 'flare.json')
     industry_dict = {}
-    print 11111111111
     exchange_data = Exchange.objects.get(exchange_name=name)
     industry_data = Industry_classification.objects.filter(exchange_id=exchange_data)
     instr_data = Instrument.objects.filter(exchange_id=exchange_data)
-    price_data = Price.objects.filter(instrument_id__in=instr_data)
+    price_data = Price.objects.filter(instrument_id__in=instr_data, date_time__contains=today)
 
     for i in industry_data:
         industry_dict[i.industry_classification_name] = []
@@ -133,3 +131,14 @@ def hot_to_chart(request):
     instr_name = request.GET.get('name', '')
     data = Instrument.objects.get(instrument_name=instr_name)
     return HttpResponse(json.dumps({'id': data.id}))
+
+def code_to_name(request):
+    '''通过id获取名字'''
+
+    result = {}
+    code = int(request.GET.get('code', ''))
+    if code:
+        data = Instrument.objects.filter(instrument_id=code)
+        for i in data:
+            result['name'] = i.instrument_name
+    return HttpResponse(result['name'])

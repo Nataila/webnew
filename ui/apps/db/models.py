@@ -141,7 +141,17 @@ class WatchlistAdmin(admin.ModelAdmin):
 class News(models.Model):
     """ 新闻
     """
+    INCIDENT_CHOICE = (
+        (u'公告', u'公告'),
+        (u'研报', u'研报'),
+        (u'新闻', u'新闻')
+    )
 
+    ENTITY_CHOICE = (
+        (u'中国', u'中国'),
+        (u'美国', u'美国'),
+        (u'其他', u'其他'),
+    )
     news_title = models.CharField(max_length=120, verbose_name = u'新闻标题')
     news_content = models.TextField(verbose_name = u'内容')
     news_fasi = models.IntegerField(verbose_name = u'情绪指数')
@@ -149,6 +159,8 @@ class News(models.Model):
     news_time = models.DateTimeField(auto_now_add=False, verbose_name=u'日期时间')
     source =  models.CharField(max_length=120, verbose_name = u'新闻来源')
     instrument_id = models.ForeignKey(Instrument, verbose_name=u'股票')
+    incident = models.CharField(max_length=20, choices=INCIDENT_CHOICE, verbose_name=u'事件')
+    entity = models.CharField(max_length=20, choices=ENTITY_CHOICE, verbose_name=u'主体')
     industry_classification = models.ForeignKey(Industry_classification, verbose_name=u'所属板块')
 
 

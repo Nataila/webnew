@@ -11,11 +11,9 @@
 {% endblock %}
 {% block main %}
 <div class="left col-md-3 content select-stock">
-  <form action="." method='GET' role='form' id='choice-form'>
-    <div class="form-group">
-      <input class="form-control" id="focusedInput" type="text" name="search" placeholder="{% trans '搜索公司/代码' %}">
-    </div>
-  </form>
+  <div class="form-group">
+    <input class="form-control" id="choice-search" type="text" name="search" placeholder="{% trans '搜索公司/代码' %}">
+  </div>
   <div class="stock-list" id='stock-list'>
   </div>
 </div>
@@ -50,13 +48,13 @@
 <script type='javascript/template' id='tpl-stcok'>
   <ul class="topnav list-unstyled">
     <% _.each(data.country_to_exchange, function (i, j) { %>
-      <li><a href="#"><%= j %></a>
+      <li class='country'><a href="#" class='country-a'><%= j %></a>
         <ul class='list-unstyled'>
         <% _.each(i, function (k) { %>
-          <li class='exchange-name' style="z-index: 100"><a href="#"><%= k %></a>
+          <li class='exchange-name' style="z-index: 100"><a href="#" class='exchange-a'><%= k %></a>
             <ul class='list-unstyled'>
             <% _.each(data.exchange_to_industry[k], function (o) { %>
-              <li><a href="#"><%= o %></a>
+              <li class='indu-name'><a href="#" class='indu-a'><%= o %></a>
                 <ul class='list-unstyled'>
                 <% _.each(data.industry_to_instr[o], function (d) { %>
                   <li class='instrument-name'><a href="#"><%= d %><span class="add" data-toggle="modal" data-target="#watchlist">加入列表</span></a></li>

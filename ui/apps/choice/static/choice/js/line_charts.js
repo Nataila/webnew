@@ -112,6 +112,7 @@ require(
           .style("top", function(d) { return d.y + "px"; })
           .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
           .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; })
+          .style("line-height", function (d) {return Math.max(0, d.dy - 1) + "px";})
           .style("background", function(d) { return d.children ? color(d.name) : null; })
           .style("cursor", "pointer")
           .text(function(d) { return d.children ? null : d.name; });

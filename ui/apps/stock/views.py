@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 # Nataila @ 2015-01-05
 
-import json
 import sys
+import json
+import datetime
 
+from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
@@ -128,8 +130,12 @@ def get_news(request):
         'industry': {'id': '', 'name': ''}
     }
     result_list = []
-    instr_id = request.GET.get('instrId')
-    news_data = News.objects.filter(instrument_id=instr_id)
+    instr_id = request.GET.get('instrId', '')
+    date_time = request.GET.get('time', '')
+    if instr_id:
+        news_data = News.objects.filter(instrument_id=instr_id)
+    else:
+        news_data = News.objects.filter(news_time__contains=date_time)
 
     for i in news_data:
         result_list.append({
@@ -173,8 +179,10 @@ def add_watch_list(request):
     return HttpResponse(json.dumps(result))
 
 def remove_watch(request):
-    instr_name = request.GET.get('instrname', '')
+    instr_name = request.GET.get('instrname', '').strip()
     user = request.user
-    instr_data = Interlistwatch.objects.get(name=instr_name, user=user)
-    print instr_data
-    return HttpResponse(200)
+    instr_obj = Instrument.objects.filter(instrument_name=instr_name)
+    instr_data = Interlistwatch.objects.get(inter_list=instr_obj[0], user=user)
+    instr_data.delete()
+    now_path = request.get_full_path()
+    return HttpResponse(json.dumps({'code': 200}))

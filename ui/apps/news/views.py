@@ -4,6 +4,8 @@
 
 import json
 
+from django.db.models import Q
+
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
@@ -114,9 +116,20 @@ def news_remind(request):
     ''' 获取新闻提醒
     '''
 
+    source_list = []
+    entity_list = []
+    incident_list = []
     user = request.user
     remind_data = NewsRemind.objects.get(user=user)
+    remind_news = Newswatch.objects.filter(user=user)
     last_search_time = remind_data.last_search_time
-    news_data = News.objects.filter(news_time__gt=last_search_time)
+    for i in remind_news:
+        source_list.append(i.source)
+        entity_list.append(i.entity)
+        incident_list.append(i.incident)
+    source_list = list(set(source_list))
+    entity_list = list(set(entity_list))
+    incident_list = list(set(incident_list))
+    news_data = News.objects.filter(Q(incident__in=incident_list),Q(source__in=source_list), Q(entity__in=entity_list), news_time__gt=last_search_time)
     result = json.dumps({'count': news_data.count()})
     return HttpResponse(result)
