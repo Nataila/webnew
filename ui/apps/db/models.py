@@ -5,22 +5,31 @@ from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
 
-class Issuser(models.Model):
+class Issuer(models.Model):
     """ 发行者
     """
 
-    issuer_name = models.CharField(max_length=120, verbose_name = u'发行者名称')
+    id = models.IntegerField(primary_key=True)
+    short_name = models.CharField(max_length=100, blank=True)
+    long_name = models.CharField(max_length=100, blank=True)
+    register_city = models.CharField(max_length=50, blank=True)
+    class Meta:
+        db_table = 'issuer'
 
     def __unicode__(self):
-        return u'%s' % (self.issuer_name)
+        return u'%s' % (self.long_name)
+
 class IssuerAdmin(admin.ModelAdmin):
-    list_dispaly = ('issuer_name',)
+    list_dispaly = ('long_name',)
 
 class Country(models.Model):
     """ 国家
     """
 
-    country_name = models.CharField(max_length=120, verbose_name = u'国家名称')
+    country_iso_code = models.CharField(primary_key=True, max_length=50)
+    country_name = models.CharField(max_length=50, blank=True)
+    class Meta:
+        db_table = 'country'
 
     def __unicode__(self):
         return u'%s' % (self.country_name)
@@ -33,69 +42,70 @@ class Exchange(models.Model):
     """ 交易所
     """
 
-    exchange_name = models.CharField(max_length=120, verbose_name = u'交易所名称')
-    country_iso_code = models.ForeignKey(Country, verbose_name = u'国家')
+    id = models.IntegerField(primary_key=True)
+    short_name = models.CharField(max_length=50, blank=True)
+    long_name = models.CharField(max_length=50, blank=True)
+    country_iso_code = models.CharField(max_length=50, blank=True)
 
     def __unicode__(self):
-        return u'%s' % (self.exchange_name)
+        return u'%s' % (self.long_name)
 class ExchangeAdmin(admin.ModelAdmin):
-    list_dispaly = ('exchange_name',)
+    list_dispaly = ('long_name',)
 
 
-class Industry_classification(models.Model):
+class IndustryClassification(models.Model):
     """ 行业
     """
+    id = models.IntegerField(primary_key=True)
+    classification_standard = models.CharField(max_length=50, blank=True)
+    classification_name = models.CharField(max_length=80, blank=True)
+    parent_classification = models.ForeignKey('self', blank=True, null=True)
+    class Meta:
+        db_table = 'industry_classification'
 
-    industry_classification_name = models.CharField(max_length=120, verbose_name = u'行业名称')
-    parent_classification_id = models.CharField(max_length=120, verbose_name = u'行业上级分类代码')
-    parent_classification_name = models.CharField(max_length=120, verbose_name = u'行业上级分类名称')
-    classification_set = models.CharField(max_length=120, verbose_name = u'分类标准')
-    exchange_id = models.ForeignKey(Exchange, verbose_name = u'所属证交所')
 
     def __unicode__(self):
-        return u'%s' % (self.industry_classification_name)
-class Industry_classificationAdmin(admin.ModelAdmin):
-    list_dispaly = ('industry_classification_name',)
+        return u'%s' % (self.classification_name)
+
+class IndustryClassificationAdmin(admin.ModelAdmin):
+    list_dispaly = ('classification_name',)
 
 
 class Instrument(models.Model):
     """ 证券
     """
 
-    instrument_id = models.IntegerField(verbose_name = u'证券代码', unique=True)
-    instrument_name = models.CharField(max_length=120, verbose_name = u'证券名称')
-    instrument_type = models.CharField(max_length=80, verbose_name = u'证券类型')
-    issuer_id = models.ForeignKey(Issuser, verbose_name = u'发行者')
-    exchange_id = models.ForeignKey(Exchange, verbose_name = u'交易所')
-    industry_classification_id = models.ForeignKey(Industry_classification, verbose_name = u'版块')
+    id = models.IntegerField(primary_key=True)
+    short_name = models.CharField(max_length=50, blank=True)
+    long_name = models.CharField(max_length=100, blank=True)
+    instrument_type = models.CharField(max_length=50, blank=True)
+    issuer = models.ForeignKey('Issuer', blank=True, null=True)
+    exchange = models.ForeignKey(Exchange, blank=True, null=True)
+    industry_classification = models.ForeignKey(IndustryClassification, blank=True, null=True)
+    class Meta:
+        db_table = 'instrument'
 
     def __unicode__(self):
-        return u'%s' % (self.instrument_name)
+        return u'%s' % (self.long_name)
 class InstrumentAdmin(admin.ModelAdmin):
-    list_dispaly = ('instrument_name',)
-
-
-class Country(models.Model):
-    """ 国家
-    """
-
-    country_name = models.CharField(max_length=120, verbose_name = u'国家名称')
-
-    def __unicode__(self):
-        return u'%s' % (self.country_name)
-class CountryAdmin(admin.ModelAdmin):
-    list_dispaly = ('country_name',)
-
+    list_dispaly = ('long_name',)
 
 class Identifier(models.Model):
     """ 识别符
     """
-    instrument_id = models.ForeignKey(Instrument)
-    identifier_type = models.CharField(max_length=120, verbose_name = u'识别符类别')
-    identifier_value = models.CharField(max_length=120, verbose_name = u'识别符值')
+    id = models.IntegerField(primary_key=True)
+    instrument_id = models.IntegerField(blank=True, null=True)
+    identifier_type = models.CharField(max_length=10, blank=True)
+    identifier_value = models.CharField(max_length=20, blank=True)
+    description = models.CharField(max_length=50, blank=True)
+    currency_code = models.CharField(max_length=10, blank=True)
+    exchange = models.ForeignKey(Exchange, blank=True, null=True)
+    class Meta:
+        db_table = 'identifier'
 
     def __unicode__(self):
-        return u'%s' % (self.identifier_type)
+        return u'%s' % (self.identifier_value)
+
 class IdentifierAdmin(admin.ModelAdmin):
     list_dispaly = ('identifier_value',)
 
@@ -104,16 +114,21 @@ class Price(models.Model):
     """ 价格
     """
 
-    instrument_id = models.ForeignKey(Instrument)
-    date_time = models.DateTimeField(auto_now_add=False, verbose_name=u'日期时间')
-    price_type = models.CharField(max_length=120, verbose_name = u'价格类型')
-    price_value = models.CharField(max_length=120, verbose_name = u'价格值')
-    instrument_fasi = models.CharField(max_length=120, verbose_name = u'情绪值')
+    instrument_id = models.CharField(max_length=16, blank=True)
+    date_time = models.DateTimeField(blank=True, null=True)
+    open = models.TextField(blank=True) # This field type is a guess.
+    high = models.TextField(blank=True) # This field type is a guess.
+    low = models.TextField(blank=True) # This field type is a guess.
+    close = models.TextField(blank=True) # This field type is a guess.
+    volume = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
+    class Meta:
+        db_table = 'price'
 
     def __unicode__(self):
         return u'%s' % (self.instrument_id)
+
 class PriceAdmin(admin.ModelAdmin):
-    list_dispaly = ('price_value', 'instrument_fasi', 'date_time')
+    list_dispaly = ('ticker')
 
 class Customer(models.Model):
     """ 客户
@@ -129,9 +144,10 @@ class Watchlist(models.Model):
     """ 观察者
     """
 
-    customer_id = models.ForeignKey(Customer)
-    watchlist_name = models.CharField(max_length=120, verbose_name = u'观察者名单')
-    instrument_id = models.ForeignKey(Instrument)
+    id = models.IntegerField(primary_key=True)
+    customer_id = models.IntegerField()
+    watchlist_name = models.CharField(max_length=50, blank=True)
+    instrument = models.ForeignKey(Instrument, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % (self.watchlist_name)
@@ -161,7 +177,7 @@ class News(models.Model):
     instrument_id = models.ForeignKey(Instrument, verbose_name=u'股票')
     incident = models.CharField(max_length=20, choices=INCIDENT_CHOICE, verbose_name=u'事件')
     entity = models.CharField(max_length=20, choices=ENTITY_CHOICE, verbose_name=u'主体')
-    industry_classification = models.ForeignKey(Industry_classification, verbose_name=u'所属板块')
+    industry_classification = models.ForeignKey(IndustryClassification, verbose_name=u'所属板块')
 
 
     def __unicode__(self):

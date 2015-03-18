@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load staticfiles %}
+{% load glau_extras %}
 {% block css-file %}
   {{ block.super }}
   <link rel="stylesheet/less" type="text/css" href="{% static 'home/css/home.less' %}">
@@ -31,10 +32,10 @@
       <tbody>
         {% for i in instr_data %}
         <tr data-id={{ i.id }}>
-          <td><a href="{% url 'stock' %}?in_id={{ i.id }}">{{ i.instrument_name }}</a></td>
-          <td>{{ i.instrument_id }}</td>
+          <td><a href="{% url 'stock' %}?in_id={{ i.id }}">{{ i.short_name }}</a></td>
+          <td>{{ i.id }}</td>
           <td>{{ i.instrument_type }}</td>
-          <td>{{i.exchange_id.country_iso_code.country_name}}</td>
+          <td>{{ i.exchange_id.country_iso_code|get_country }}</td>
         </tr>
         {% endfor %}
       </tbody>

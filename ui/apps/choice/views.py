@@ -10,7 +10,7 @@ from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-from apps.db.models import Instrument, Exchange, Country, Industry_classification, Price
+from apps.db.models import Instrument, Exchange, Country, IndustryClassification, Price
 from apps.libs.views import get_default_list
 
 @login_required(login_url='/login/')
@@ -23,7 +23,7 @@ def choice(request, template):
     instr_data = Instrument.objects.all()
     exchange_data = Exchange.objects.all()
     country_data = Country.objects.all()
-    industry_data = Industry_classification.objects.all()
+    industry_data = IndustryClassification.objects.all()
     for i in country_data:
         exchange_to_country[i.country_name] = []
     for i in exchange_data:
@@ -70,7 +70,7 @@ def get_choice_list(request):
     instr_data = Instrument.objects.all()
     exchange_data = Exchange.objects.all()
     country_data = Country.objects.all()
-    industry_data = Industry_classification.objects.all()
+    industry_data = IndustryClassification.objects.all()
 
     for i in instr_data:
         industry_to_instr.append({i.industry_classification_id.industry_classification_name: i.instrument_name})
@@ -109,7 +109,7 @@ def change_hot_chart(request):
     json_file = os.path.join('/var/data/users/chenc3/opt/webnew/ui/apps/choice/static/choice', 'flare.json')
     industry_dict = {}
     exchange_data = Exchange.objects.get(exchange_name=name)
-    industry_data = Industry_classification.objects.filter(exchange_id=exchange_data)
+    industry_data = IndustryClassification.objects.filter(exchange_id=exchange_data)
     instr_data = Instrument.objects.filter(exchange_id=exchange_data)
     price_data = Price.objects.filter(instrument_id__in=instr_data, date_time__contains=today)
 

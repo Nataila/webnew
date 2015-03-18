@@ -16,7 +16,7 @@
 {% block main %}
   <div class="col-md-12 show_watch">
     <form class="form-inline" role="form" action='{% url 'add_to_list' %}' method='GET'>
-      <span class='watch-content'>{{ need_watch_instr }}<span>
+      <span class='watch-content'>{{ need_watch_instr.short_name }}<span>
       <input type="text" name='instr_id' value='{{ need_watch_instr.id }}' style='display: none'>
       {% if is_watched %}
       <select name="to_list" class="form-control">

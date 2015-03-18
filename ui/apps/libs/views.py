@@ -10,8 +10,8 @@ def get_default_list(request):
         'my_watch_list': [],
         'watch_news': []
     }
-    default_result['my_watch_list'] = get_my_watch_list(request)
-    default_result['watch_news'] = get_watch_news_list(request)
+    #default_result['my_watch_list'] = get_my_watch_list(request)
+    #default_result['watch_news'] = get_watch_news_list(request)
     return default_result
 
 
@@ -22,19 +22,19 @@ def get_my_watch_list(request):
     user = request.user.id
     list_data = Interlistwatch.objects.filter(user=user)
     user_watched = Listinter.objects.filter(user=request.user)
-    for i in user_watched:
-        watch_list[i.name] = []
-    for i in list_data:
-        watch_list[i.list_name.name].append({'name': i.inter_list.instrument_name, 'id': i.inter_list.id})
-    for i in user_watched:
-        mid_dict[i.name] = i.id
-    for i in watch_list:
-        list_result.append({'list_name': i, 'data': watch_list[i]})
-    for i in list_result:
-        try:
-            i['id'] = mid_dict[i['list_name']]
-        except KeyError:
-            i['id'] = []
+    #for i in user_watched:
+    #    watch_list[i.name] = []
+    #for i in list_data:
+    #    watch_list[i.list_name.name].append({'name': i.inter_list.short_name, 'id': i.inter_list.id})
+    #for i in user_watched:
+    #    mid_dict[i.name] = i.id
+    #for i in watch_list:
+    #    list_result.append({'list_name': i, 'data': watch_list[i]})
+    #for i in list_result:
+    #    try:
+    #        i['id'] = mid_dict[i['list_name']]
+    #    except KeyError:
+    #        i['id'] = []
     return list_result
 
 def get_watch_news_list(request):

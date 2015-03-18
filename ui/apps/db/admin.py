@@ -2,9 +2,9 @@
 # coding: utf-8
 
 from django.contrib import admin
-from apps.db.models import (Issuser, IssuerAdmin, Instrument, InstrumentAdmin,
-        Exchange, ExchangeAdmin, Industry_classification,
-        Industry_classificationAdmin, Country, CountryAdmin,
+from apps.db.models import (Issuer, IssuerAdmin, Instrument, InstrumentAdmin,
+        Exchange, ExchangeAdmin, IndustryClassification,
+        IndustryClassificationAdmin, Country, CountryAdmin,
         Identifier, IdentifierAdmin, Price, PriceAdmin,
         Customer, CustomerAdmin, Watchlist, WatchlistAdmin, News, NewsAdmin,
         Interlistwatch, InterlistwatchAdmin, Listinter, ListinterAdmin,
@@ -12,10 +12,10 @@ from apps.db.models import (Issuser, IssuerAdmin, Instrument, InstrumentAdmin,
         NewsRemind, NewsRemindAdmin
         )
 
-admin.site.register(Issuser, IssuerAdmin)
+admin.site.register(Issuer, IssuerAdmin)
 admin.site.register(Instrument, InstrumentAdmin)
 admin.site.register(Exchange, ExchangeAdmin)
-admin.site.register(Industry_classification, Industry_classificationAdmin)
+admin.site.register(IndustryClassification, IndustryClassificationAdmin)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Identifier, IdentifierAdmin)
 admin.site.register(Price, PriceAdmin)

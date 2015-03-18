@@ -14,7 +14,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
-from apps.db.models import Instrument, News, Instrument, Price, Listinter, Interlistwatch
+from apps.db.models import Instrument, News, Price, Listinter, Interlistwatch
 from apps.libs.views import get_default_list
 
 reload(sys)
@@ -40,8 +40,10 @@ def stock(request, template):
     default_result = get_default_list(request)
     search_intr = request.GET.get('in_id', '')
     user_id = request.user.id
+    data = Price.objects.filter(instrument_id='2768')
+    print 3333333333, data
     if search_intr:
-        need_watch_instr = Instrument.objects.get(id=search_intr)
+        need_watch_instr = Instrument.objects.get(id__exact=int(search_intr))
         watched_list = Interlistwatch.objects.filter(Q(user=user_id), Q(inter_list=need_watch_instr))
         if watched_list:
             is_watched = False
@@ -57,21 +59,22 @@ def stock(request, template):
 def get_chart_data(request):
     ''' 获取曲线图数据
     '''
+
     search_id = 1
     instrId = request.GET.get('instrId', '')
     instr_name = request.GET.get('instr_name', '')
     if instrId:
         search_id = instrId
-        data = Price.objects.filter(instrument_id=search_id).order_by('date_time')
-    if instr_name:
-        data = Price.objects.filter(instrument_id__instrument_name=instr_name).order_by('date_time')
+        data = Price.objects.filter(instrument_id=int(search_id))
+    #if instr_name:
+    #    data = Price.objects.filter(instrument_id__instrument_name=instr_name).order_by('date_time')
 
     result = {'instrument': '', 'time': [], 'price_value': [], 'instrument_fasi': []}
-    for i in data:
-        result['price_value'].append(int(i.price_value))
-        result['instrument_fasi'].append(int(i.instrument_fasi))
-        result['time'].append(i.date_time.strftime("%Y-%m-%d"))
-        result['instrument'] = i.instrument_id.instrument_name
+    #for i in data:
+    #    result['price_value'].append(int(i.price_value))
+    #    result['instrument_fasi'].append(int(i.instrument_fasi))
+    #    result['time'].append(i.date_time.strftime("%Y-%m-%d"))
+    #    result['instrument'] = i.instrument_id.instrument_name
     result_json = json.dumps(result)
     return HttpResponse(result_json)
 

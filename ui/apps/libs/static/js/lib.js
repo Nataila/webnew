@@ -30,8 +30,8 @@ $(document).ready(function () {
       }
     })
   }
-  getNewsRemind();
-  setInterval(getNewsRemind, 6000);
+  //getNewsRemind();
+  //setInterval(getNewsRemind, 6000);
   $('#news-remind').on('click', function () {
     var count = $('.badge-news-remind:eq(0)').text();
     window.location.href = '/set_account/?news='+count;
