@@ -10,23 +10,13 @@ class Issuser(models.Model):
     """
 
     issuer_name = models.CharField(max_length=120, verbose_name = u'发行者名称')
+    #class Meta:
+    #    db_table = 'issuer'
 
     def __unicode__(self):
         return u'%s' % (self.issuer_name)
 class IssuerAdmin(admin.ModelAdmin):
     list_dispaly = ('issuer_name',)
-
-class Country(models.Model):
-    """ 国家
-    """
-
-    country_name = models.CharField(max_length=120, verbose_name = u'国家名称')
-
-    def __unicode__(self):
-        return u'%s' % (self.country_name)
-class CountryAdmin(admin.ModelAdmin):
-    list_dispaly = ('country_name',)
-
 
 
 class Exchange(models.Model):
@@ -37,6 +27,8 @@ class Exchange(models.Model):
     long_name = models.CharField(max_length=120, verbose_name = u'交易所全称')
     country_iso_code = models.CharField(max_length=120, verbose_name = u'国家')
     #country_iso_code = models.ForeignKey(Country, verbose_name = u'国家')
+    #class Meta:
+    #    db_table = 'exchange'
 
     def __unicode__(self):
         return u'%s' % (self.exchange_name)
@@ -53,6 +45,8 @@ class Industry_classification(models.Model):
     parent_classification_name = models.CharField(max_length=120, verbose_name = u'行业上级分类名称')
     classification_set = models.CharField(max_length=120, verbose_name = u'分类标准')
     exchange_id = models.ForeignKey(Exchange, verbose_name = u'所属证交所')
+    #class Meta:
+    #    db_table = 'IndustryClassification'
 
     def __unicode__(self):
         return u'%s' % (self.industry_classification_name)
@@ -70,6 +64,8 @@ class Instrument(models.Model):
     issuer_id = models.ForeignKey(Issuser, verbose_name = u'发行者')
     exchange_id = models.ForeignKey(Exchange, verbose_name = u'交易所')
     industry_classification_id = models.ForeignKey(Industry_classification, verbose_name = u'版块')
+    #class Meta:
+    #    db_table = 'instrument'
 
     def __unicode__(self):
         return u'%s' % (self.instrument_name)
@@ -83,6 +79,8 @@ class Country(models.Model):
 
     country_name = models.CharField(max_length=120, verbose_name = u'国家名称')
     country_iso_code = models.CharField(max_length=120, verbose_name = u'国家')
+    #class Meta:
+    #    db_table = 'country'
 
     def __unicode__(self):
         return u'%s' % (self.country_name)
@@ -96,6 +94,8 @@ class Identifier(models.Model):
     instrument_id = models.ForeignKey(Instrument)
     identifier_type = models.CharField(max_length=120, verbose_name = u'识别符类别')
     identifier_value = models.CharField(max_length=120, verbose_name = u'识别符值')
+    #class Meta:
+    #    db_table = 'identifier'
 
     def __unicode__(self):
         return u'%s' % (self.identifier_type)
@@ -112,6 +112,8 @@ class Price(models.Model):
     #price_type = models.CharField(max_length=120, verbose_name = u'价格类型')
     close = models.CharField(max_length=120, verbose_name = u'价格值')
     #instrument_fasi = models.CharField(max_length=120, verbose_name = u'情绪值')
+    #class Meta:
+    #    db_table = 'price'
 
     def __unicode__(self):
         return u'%s' % (self.instrument_id)
@@ -126,6 +128,8 @@ class Fasi(models.Model):
     date_time = models.DateTimeField(auto_now_add=False, verbose_name=u'日期时间')
     date = models.DateTimeField(auto_now_add=False, verbose_name=u'日期')
     hour = models.IntegerField(verbose_name = u'小时', unique=True)
+    #class Meta:
+    #    db_table = 'fasi'
     def __unicode__(self):
         return u'%s' % (self.instrument_id)
 
