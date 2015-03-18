@@ -9,7 +9,7 @@ from apps.db.models import (Issuser, IssuerAdmin, Instrument, InstrumentAdmin,
         Customer, CustomerAdmin, Watchlist, WatchlistAdmin, News, NewsAdmin,
         Interlistwatch, InterlistwatchAdmin, Listinter, ListinterAdmin,
         Newswatch, NewswatchAdmin, MynewswatchList, MynewswatchListAdmin,
-        NewsRemind, NewsRemindAdmin
+        NewsRemind, NewsRemindAdmin, Fasi, FasiAdmin
         )
 
 admin.site.register(Issuser, IssuerAdmin)
@@ -27,3 +27,4 @@ admin.site.register(Listinter, ListinterAdmin)
 admin.site.register(Newswatch, NewswatchAdmin)
 admin.site.register(MynewswatchList, MynewswatchListAdmin)
 admin.site.register(NewsRemind, NewsRemindAdmin)
+admin.site.register(Fasi, FasiAdmin)

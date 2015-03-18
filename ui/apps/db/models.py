@@ -33,8 +33,10 @@ class Exchange(models.Model):
     """ 交易所
     """
 
-    exchange_name = models.CharField(max_length=120, verbose_name = u'交易所名称')
-    country_iso_code = models.ForeignKey(Country, verbose_name = u'国家')
+    short_name = models.CharField(max_length=120, verbose_name = u'交易所简称')
+    long_name = models.CharField(max_length=120, verbose_name = u'交易所全称')
+    country_iso_code = models.CharField(max_length=120, verbose_name = u'国家')
+    #country_iso_code = models.ForeignKey(Country, verbose_name = u'国家')
 
     def __unicode__(self):
         return u'%s' % (self.exchange_name)
@@ -80,6 +82,7 @@ class Country(models.Model):
     """
 
     country_name = models.CharField(max_length=120, verbose_name = u'国家名称')
+    country_iso_code = models.CharField(max_length=120, verbose_name = u'国家')
 
     def __unicode__(self):
         return u'%s' % (self.country_name)
@@ -106,14 +109,29 @@ class Price(models.Model):
 
     instrument_id = models.ForeignKey(Instrument)
     date_time = models.DateTimeField(auto_now_add=False, verbose_name=u'日期时间')
-    price_type = models.CharField(max_length=120, verbose_name = u'价格类型')
-    price_value = models.CharField(max_length=120, verbose_name = u'价格值')
-    instrument_fasi = models.CharField(max_length=120, verbose_name = u'情绪值')
+    #price_type = models.CharField(max_length=120, verbose_name = u'价格类型')
+    close = models.CharField(max_length=120, verbose_name = u'价格值')
+    #instrument_fasi = models.CharField(max_length=120, verbose_name = u'情绪值')
 
     def __unicode__(self):
         return u'%s' % (self.instrument_id)
 class PriceAdmin(admin.ModelAdmin):
     list_dispaly = ('price_value', 'instrument_fasi', 'date_time')
+
+
+class Fasi(models.Model):
+    """情绪值
+    """
+    instrument_id = models.ForeignKey(Instrument)
+    date_time = models.DateTimeField(auto_now_add=False, verbose_name=u'日期时间')
+    date = models.DateTimeField(auto_now_add=False, verbose_name=u'日期')
+    hour = models.IntegerField(verbose_name = u'小时', unique=True)
+    def __unicode__(self):
+        return u'%s' % (self.instrument_id)
+
+class FasiAdmin(admin.ModelAdmin):
+    list_dispaly = ('date',)
+
 
 class Customer(models.Model):
     """ 客户
