@@ -41,48 +41,51 @@ require(
         {
           type : 'category',
           boundaryGap : false,
-          data : []
+          data : [1,2,3,4]
         }
       ],
       yAxis : [
         {
+          name: '价格',
           type : 'value',
           axisLabel : {
             formatter: '{value}'
           }
-        }
+        },
+        {
+          name: '情绪值',
+          type : 'value',
+          axisLabel : {
+            formatter: '{value}'
+          }
+        },
       ],
       series : [
         {
           name:'价格',
           type:'line',
-          data:[],
-          markPoint : {
-            data : [
-              {type : 'max', name: '最大值'},
-              {type : 'min', name: '最小值'}
-            ]
-          },
-          markLine : {
-            data : [
-              {type : 'average', name: '平均值'}
-            ]
+          data:[1,2,3,4],
+          symbolSize: '1',
+          itemStyle: {
+            normal: {
+              lineStyle: {
+                width: '0.8'
+              }
+            }
           }
         },
         {
           name:'情绪指数',
           type:'line',
-          data:[],
-          markPoint : {
-            data : [
-              {type : 'max', name: '最大值'},
-              {type : 'min', name: '最小值'}
-            ]
-          },
-          markLine : {
-            data : [
-              {type : 'average', name: '平均值'}
-            ]
+          yAxisIndex: 1,
+          data:[6100,1200,4002,1992],
+          symbolSize: '1',
+          itemStyle: {
+            normal: {
+              lineStyle: {
+                width: '0.8'
+              }
+            }
           }
         }
       ]

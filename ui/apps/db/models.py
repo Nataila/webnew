@@ -253,3 +253,14 @@ class NewsRemind(models.Model):
 
 class NewsRemindAdmin(admin.ModelAdmin):
     list_dispaly = ('user', 'last_search_time',)
+
+
+class WebSentimentHourly(models.Model):
+    id = models.IntegerField(primary_key=True)
+    date = models.DateField()
+    hour = models.SmallIntegerField()
+    instrument_id = models.CharField(max_length=16)
+    sentiment = models.DecimalField(max_digits=25, decimal_places=2, blank=True, null=True)
+    price = models.TextField(blank=True) # This field type is a guess.
+    class Meta:
+        db_table = 'web_sentiment_hourly'
