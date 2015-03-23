@@ -28,7 +28,7 @@ require(
       },
       calculable : true,
       grid: {
-        x: 40,
+        x: 60,
         x2: 40,
       },
       dataZoom : {
@@ -48,11 +48,10 @@ require(
         {
           name: '价格',
           type : 'value',
-          min: 1100,
-          max: 1400,
           axisLabel : {
-            formatter: '{value}'
-          }
+            formatter: '${value}'
+          },
+          scale: true,
         },
         {
           name: '情绪值',
@@ -101,7 +100,7 @@ require(
         option['xAxis'][0]['data']=data['time'];
         option['series'][0]['data']=data['price_value'];
         option['series'][1]['data']=data['instrument_fasi'];
-        option['title']['text']=data['instrument']
+        option['title']['text']=data['instrument'];
         myChart.setOption(option);
       });
     }
