@@ -304,4 +304,19 @@ class WebSiteitemsraw(models.Model):
         managed = False
         db_table = 'web_siteitemsraw'
 
-
+class FtrEventRaw(models.Model):
+    id = models.IntegerField(primary_key=True)
+    news_id = models.IntegerField(blank=True, null=True)
+    event_scope = models.CharField(max_length=100, blank=True)
+    event_type = models.CharField(max_length=100, blank=True)
+    direction = models.CharField(max_length=100, blank=True)
+    expectation = models.CharField(max_length=100, blank=True)
+    expectation_bias = models.CharField(max_length=100, blank=True)
+    sentiment = models.CharField(max_length=100, blank=True)
+    event_phrase = models.TextField(blank=True)
+    quote_organization = models.CharField(max_length=100, blank=True)
+    quote_person = models.CharField(max_length=100, blank=True)
+    nlp_history_id = models.IntegerField(blank=True, null=True)
+    class Meta:
+        managed = False
+        db_table = 'ftr_event_raw'

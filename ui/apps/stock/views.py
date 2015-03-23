@@ -14,7 +14,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
-from apps.db.models import Instrument, News, Price, Listinter, Interlistwatch, WebSentimentHourly, FtrCustomerSentimentHourly, WebSiteitemsraw, WebFeedsites
+from apps.db.models import Instrument, News, Price, Listinter, Interlistwatch, WebSentimentHourly, FtrCustomerSentimentHourly, WebSiteitemsraw, WebFeedsites, FtrEventRaw
 from apps.libs.views import get_default_list
 
 reload(sys)
@@ -125,7 +125,7 @@ def get_news(request):
     result = {
         'id': '',
         'title': '',
-        'content': '',
+        'content': [],
         'link': '',
         'fasi': '',
         'time': '',
@@ -144,14 +144,12 @@ def get_news(request):
         day = times[0]
         hour = times[1][:-3]
         news_data = FtrCustomerSentimentHourly.objects.filter(instrument_id=i_id, date=day, hour=hour)
-        import pdb;
-        pdb.set_trace();
         #news_data = News.objects.filter(news_time__contains=date_time)
     raw_list = []
 
     for i in news_data:
         raw_list.append(i.siteitemsraw_id)
-    news_data = WebSiteitemsraw.objects.filter(id__in=list(set(raw_list)))[:20]
+    news_data = WebSiteitemsraw.objects.filter(id__in=list(set(raw_list))).order_by('-item_date')[:20]
     for i in news_data:
         site_name = WebFeedsites.objects.get(id=i.site_id)
         result_list.append({
@@ -162,6 +160,12 @@ def get_news(request):
             'source': site_name.site_name
 
         })
+    for i in result_list:
+        event_id_list = []
+        event_data = FtrCustomerSentimentHourly.objects.filter(siteitemsraw_id=i.id)
+        for j in event_data:
+            event_id_list.append(j.customer_sentiment_raw_id)
+        print event_id_list
     #    result_list.append({
     #        'id': i.id,
     #        'title': i.news_title,

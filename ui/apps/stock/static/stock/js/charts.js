@@ -116,7 +116,7 @@ require(
 
     myChart.on(ecConfig.EVENT.CLICK, function (p, o) {
       if (['最小值', '最大值'].indexOf(p.name) === -1) {
-				var instr_id = $('[name="instr_id"]').val();
+        var instr_id = $('[name="instr_id"]').val();
         get_news(p.name, instr_id)
       }
     });
