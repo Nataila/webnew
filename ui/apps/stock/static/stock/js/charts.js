@@ -49,7 +49,7 @@ require(
           name: '价格',
           type : 'value',
           min: 1100,
-					max: 1400,
+          max: 1400,
           axisLabel : {
             formatter: '{value}'
           }
