@@ -157,15 +157,15 @@ def get_news(request):
             'title': i.item_title,
             'time': i.item_date.strftime("%Y-%m-%d %H:%M:%S"),
             'link': i.item_url,
-            'source': site_name.site_name
+            'source': site_name.site_name,
+            'content': [],
 
         })
     for i in result_list:
         event_id_list = []
-        event_data = FtrCustomerSentimentHourly.objects.filter(siteitemsraw_id=i.id)
-        for j in event_data:
-            event_id_list.append(j.customer_sentiment_raw_id)
-        print event_id_list
+        events_detail = FtrEventRaw.objects.filter(news_id=i['id'])
+        for e in events_detail:
+            i['content'].append(e.event_phrase)
     #    result_list.append({
     #        'id': i.id,
     #        'title': i.news_title,
