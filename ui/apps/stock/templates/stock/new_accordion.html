@@ -7,14 +7,14 @@
         <div class="panel-heading" role="tab">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#news-accordion" href="#news-<%= i.id %>" aria-expanded="true" aria-controls="collapseOne" class='new_link' data-link=<%= i.link %>>
-              <%= i.title %> <span class='new-fasi'>情绪值：<%= i.fasi %></span>
+              <%= i.title %> 
             </a>
           </h4>
         </div>
         <div id="news-<%= i.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
             <p><%= i.content %></p>
-            <p class='readmore'><span><span class='new-fasi'>情绪值: <%= i.fasi %></span></span><span class='time'>发布时间：<%= i.time%></span><span>来源：<%= i.source %></span><span><a href="<%= i.link %>" target="_blank"> 阅读全文>>></a></span></p>
+            <p class='readmore'><span class='time'>发布时间：<%= i.time%></span><span>来源：<%= i.source %></span><span><a href="<%= i.link %>" target="_blank"> 阅读全文>>></a></span></p>
           </div>
         </div>
       </div>

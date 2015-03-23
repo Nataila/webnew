@@ -1,0 +1,26 @@
+{
+    "name": "flare", 
+    "children": [
+        {
+            "name": "\u884c\u4e1a1", 
+            "children": []
+        }, 
+        {
+            "name": "\u677f\u57571", 
+            "children": [
+                {
+                    "name": "\u5de5\u5546\u8bc1\u5238", 
+                    "size": "11"
+                }, 
+                {
+                    "name": "\u62db\u5546\u8bc1\u5238", 
+                    "size": "11"
+                }, 
+                {
+                    "name": "\u94f6\u6cb3\u8bc1\u5238", 
+                    "size": "11"
+                }
+            ]
+        }
+    ]
+}

@@ -14,7 +14,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
-from apps.db.models import Instrument, News, Price, Listinter, Interlistwatch, WebSentimentHourly
+from apps.db.models import Instrument, News, Price, Listinter, Interlistwatch, WebSentimentHourly, FtrCustomerSentimentHourly, WebSiteitemsraw, WebFeedsites
 from apps.libs.views import get_default_list
 
 reload(sys)
@@ -42,7 +42,7 @@ def stock(request, template):
     user_id = request.user.id
     if search_intr:
         need_watch_instr = Instrument.objects.get(id__exact=int(search_intr))
-        watched_list = Interlistwatch.objects.filter(Q(user=user_id), Q(inter_list=need_watch_instr))
+        watched_list = Interlistwatch.objects.filter(Q(user=user_id), Q(instr_name=need_watch_instr))
         if watched_list:
             is_watched = False
     content = {
@@ -61,13 +61,13 @@ def get_chart_data(request):
     date_list = []
     price_list = []
     sentiment_list = []
-    result = {'instrument': '', 'time': [1,2,3,4], 'price_value': [9,2,3,5], 'instrument_fasi': [11,2,3,33]}
+    result = {'instrument': '', 'time': [], 'price_value': [], 'instrument_fasi': []}
     search_id = 1
     instrId = request.GET.get('instrId', '')
     instr_name = request.GET.get('instr_name', '')
     if instrId:
         search_id = instrId
-        data = WebSentimentHourly.objects.filter(instrument_id=search_id).order_by('date', 'hour')[:50]
+        data = WebSentimentHourly.objects.filter(instrument_id=search_id).order_by('date', 'hour')
         for i in data:
             result['time'].append('%s %s:00' % (i.date, i.hour))
             result['price_value'].append(i.price.replace(',', '').replace('$', ''))
@@ -75,11 +75,6 @@ def get_chart_data(request):
     #if instr_name:
     #    data = Price.objects.filter(instrument_id__instrument_name=instr_name).order_by('date_time')
 
-    #for i in data:
-    #    result['price_value'].append(int(i.price_value))
-    #    result['instrument_fasi'].append(int(i.instrument_fasi))
-    #    result['time'].append(i.date_time.strftime("%Y-%m-%d"))
-    #    result['instrument'] = i.instrument_id.instrument_name
     result_json = json.dumps(result)
     return HttpResponse(result_json)
 
@@ -105,17 +100,18 @@ def add_to_list(request):
     instr_name = request.GET.get('instr_name', '')
     list_obj = Listinter.objects.get(id=list_id)
     if instr_name:
-        instr_obj = Instrument.objects.get(instrument_name=instr_name)
+        instr_obj = Instrument.objects.get(short_name=instr_name)
     elif instr_id:
         instr_obj = Instrument.objects.get(id=instr_id)
-    db_data = Interlistwatch.objects.filter(user = request.user, list_name = list_obj, inter_list = instr_obj)
+    db_data = Interlistwatch.objects.filter(user = request.user, list_name = list_obj, instr_name = instr_obj.short_name)
     if db_data:
         return HttpResponse(json.dumps({'code': 500, 'msg': u'该股票已存在此列表中！！'}))
     else:
         instr_list = Interlistwatch(
                 user = request.user,
                 list_name = list_obj,
-                inter_list = instr_obj
+                instr_name = instr_obj.short_name,
+                instr_id = instr_obj.id
             )
         instr_list.save()
     if instr_name:
@@ -141,28 +137,48 @@ def get_news(request):
     instr_id = request.GET.get('instrId', '')
     date_time = request.GET.get('time', '')
     if instr_id:
-        news_data = News.objects.filter(instrument_id=instr_id)
+        news_data = FtrCustomerSentimentHourly.objects.filter(instrument_id=instr_id)
     else:
-        news_data = News.objects.filter(news_time__contains=date_time)
+        i_id = request.GET.get('instr_id', '')
+        times = date_time.split(' ')
+        day = times[0]
+        hour = times[1][:-3]
+        news_data = FtrCustomerSentimentHourly.objects.filter(instrument_id=i_id, date=day, hour=hour)
+        import pdb;
+        pdb.set_trace();
+        #news_data = News.objects.filter(news_time__contains=date_time)
+    raw_list = []
 
     for i in news_data:
+        raw_list.append(i.siteitemsraw_id)
+    news_data = WebSiteitemsraw.objects.filter(id__in=list(set(raw_list)))[:20]
+    for i in news_data:
+        site_name = WebFeedsites.objects.get(id=i.site_id)
         result_list.append({
             'id': i.id,
-            'title': i.news_title,
-            'content': i.news_content,
-            'link': i.news_link,
-            'fasi': i.news_fasi,
-            'time': i.news_time.strftime("%Y-%m-%d %H:%M:%S"),
-            'source': i.source,
-            'instrument': {
-                'id': i.instrument_id.id,
-                'name': i.instrument_id.instrument_name
-            },
-            'industry': {
-                'id': i.industry_classification.id,
-                'name': i.industry_classification.industry_classification_name
-            }
-            })
+            'title': i.item_title,
+            'time': i.item_date.strftime("%Y-%m-%d %H:%M:%S"),
+            'link': i.item_url,
+            'source': site_name.site_name
+
+        })
+    #    result_list.append({
+    #        'id': i.id,
+    #        'title': i.news_title,
+    #        'content': i.news_content,
+    #        'link': i.news_link,
+    #        'fasi': i.news_fasi,
+    #        'time': i.news_time.strftime("%Y-%m-%d %H:%M:%S"),
+    #        'source': i.source,
+    #        'instrument': {
+    #            'id': i.instrument_id.id,
+    #            'name': i.instrument_id.instrument_name
+    #        },
+    #        'industry': {
+    #            'id': i.industry_classification.id,
+    #            'name': i.industry_classification.industry_classification_name
+    #        }
+    #        })
     result = json.dumps(result_list)
     return HttpResponse(result)
 
@@ -179,7 +195,7 @@ def add_watch_list(request):
             user = user,
             name = new_watch_name
         )
-    	watched_list.save()
+        watched_list.save()
         result['code'] = 200
     else:
         result['code'] = 500

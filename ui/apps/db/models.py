@@ -86,9 +86,9 @@ class Instrument(models.Model):
         db_table = 'instrument'
 
     def __unicode__(self):
-        return u'%s' % (self.long_name)
+        return u'%s' % (self.short_name)
 class InstrumentAdmin(admin.ModelAdmin):
-    list_dispaly = ('long_name',)
+    list_dispaly = ('short_name',)
 
 class Identifier(models.Model):
     """ 识别符
@@ -202,13 +202,15 @@ class Interlistwatch(models.Model):
 
     user = models.ForeignKey(User)
     list_name = models.ForeignKey(Listinter)
-    inter_list = models.ForeignKey(Instrument, verbose_name=u'股票', null=True)
+    #inter_list = models.ForeignKey(Instrument, verbose_name=u'股票', null=True, blank=True)
+    instr_name = models.CharField(max_length=100, verbose_name=u'关注的股票名称', null=True, blank=True)
+    instr_id = models.CharField(max_length=20, verbose_name=u'股票id', null=True, blank=True)
 
     def __unicode__(self):
         return u'%s' % (self.list_name)
 
 class InterlistwatchAdmin(admin.ModelAdmin):
-    list_dispaly = ('list_name', 'for_user')
+    list_dispaly = ('list_name', 'inster_list')
 
 #class InstrWatch(models.Model):
 #    """ 关注的股票
@@ -264,3 +266,42 @@ class WebSentimentHourly(models.Model):
     price = models.TextField(blank=True) # This field type is a guess.
     class Meta:
         db_table = 'web_sentiment_hourly'
+
+class FtrCustomerSentimentHourly(models.Model):
+    id = models.IntegerField(primary_key=True)
+    date = models.DateField(blank=True, null=True)
+    hour = models.SmallIntegerField(blank=True, null=True)
+    instrument_id = models.CharField(max_length=6, blank=True)
+    siteitemsraw_id = models.IntegerField(blank=True, null=True)
+    customer_sentiment_raw_id = models.IntegerField(blank=True, null=True)
+    polarity = models.DecimalField(max_digits=10, decimal_places=4, blank=True, null=True)
+    class Meta:
+        managed = False
+        db_table = 'ftr_customer_sentiment_hourly'
+
+class WebFeedsites(models.Model):
+    id = models.IntegerField(primary_key=True)
+    site_name = models.CharField(max_length=30)
+    site_url = models.CharField(max_length=200)
+    site_desc = models.TextField(blank=True)
+    site_created_date = models.DateTimeField()
+    site_parser = models.CharField(max_length=100, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'web_feedsites'
+
+class WebSiteitemsraw(models.Model):
+    id = models.IntegerField(primary_key=True)
+    site = models.ForeignKey(WebFeedsites)
+    item_title = models.TextField()
+    item_subtitle = models.TextField(blank=True)
+    item_url = models.CharField(max_length=200)
+    item_created_date = models.DateTimeField()
+    item_collector_version = models.IntegerField()
+    item_date = models.DateTimeField()
+    item_raw = models.TextField()
+    class Meta:
+        managed = False
+        db_table = 'web_siteitemsraw'
+
+
